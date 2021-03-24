@@ -7,6 +7,13 @@ module.exports = {
   // configureWebpack: {
   //   name: "绝弹管理系统 - 你所不知道的风景",
   // },
+  css: {
+    loaderOptions: {
+      scss: {
+        prependData: `@import "~@/assets/styles/index.scss";`,
+      },
+    },
+  },
   // 初始化public/index.html中的title值
   chainWebpack: (config) => {
     config.plugin("html").tap((args) => {

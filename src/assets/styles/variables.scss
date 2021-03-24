@@ -1,0 +1,21 @@
+// 品牌色
+$--color-primary: #10c599;
+// 成功色
+$--color-success: #3c9;
+// 警报色
+$--color-warning: #f90;
+// 危险色
+$--color-danger: #f66;
+// 信息色
+$--color-info: #959595;
+// 白色
+$--color-white: #fff;
+// 黑色
+$--color-black: #000;
+
+$--color-regular: #606266;
+
+/* 品牌色悬浮色 */
+$--color-primary-hover: mix($--color-white,$--color-primary,20%);
+/* 品牌色点击色 */
+$--color-primary-active: mix($--color-black,$--color-primary,20%);
