@@ -1,6 +1,6 @@
 module.exports = {
   // 公共路径，因为要部署到GitHub pages上，所以将生产环境的值改成仓库名称
-  publicPath: process.env.NODE_ENE === "production" ? "/management" : "/",
+  publicPath: process.env.NODE_ENV === "production" ? "/management/" : "/",
   // 减少生产环境下的文件体积
   productionSourceMap: false,
   // 该对象会与webpack的配置对象合并
