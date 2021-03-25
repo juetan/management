@@ -1,0 +1,6 @@
+// 单行溢出截断
+@mixin text-elipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

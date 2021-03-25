@@ -1,3 +1,5 @@
+import Vue from "vue";
+
 const moduleFiles = require.context("./modules", true, /\.js$/);
 
 // moduleFiles既是函数也是对象，此处作对象调用
@@ -14,5 +16,7 @@ const modules = moduleFiles.keys().reduce((modules, modulePath) => {
 const api = {
   ...modules,
 };
+
+Vue.prototype.$api = api;
 
 export default api;

@@ -1,11 +1,10 @@
 // 引入axios
 import axios from "axios";
-import { baseURL } from "./config";
 import store from "@/store";
 
 // 创建axio例
 const request = axios.create({
-  baseURL: baseURL.development,
+  baseURL: process.env.VUE_APP_API_BASE_URL,
   timeout: 3000,
 });
 

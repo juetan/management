@@ -1,11 +1,4 @@
-export const baseURL = (function() {
-  if (process.env.NODE_ENV === "production") {
-    return "https://www.fastmock.site/mock/7522085e7af7a7b98bc42530bd1ddfb7/management";
-  } else {
-    return "https://www.fastmock.site/mock/7522085e7af7a7b98bc42530bd1ddfb7/management";
-  }
-})();
-
+// 用户模块的endpoint
 export const user = {
   auth: "user/auth",
   create: "user/create",
