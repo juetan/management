@@ -9,11 +9,6 @@ module.exports = {
 
   // 对象配置webpack：该对象会与webpack的配置对象合并
   configureWebpack: {
-    // 输出文件配置
-    // output: {
-    //   // chunkFilename: "[chunk-bundle.[contenthash:8].js",
-    // },
-
     devServer: {
       // 在hosts文件中添加127.0.0.1 www.8.com记录，再配合以下两个参数设置可使用www.8.com代替localhost:8080访问
       host: "localhost",
@@ -23,19 +18,21 @@ module.exports = {
       disableHostCheck: true,
     },
 
-    // webpack插件配置
+    // // webpack插件配置
     // plugins: [
     //   // 生产环境进行gzip压缩
-    //   process.env.NODE_ENV === "production"
-    //     ? new ComporessionPlugin({
+    //   (() => {
+    //     if (process.env.NODE_ENV === "production") {
+    //       return new ComporessionPlugin({
     //         // 正则匹配文件后缀
     //         test: /.js$|.html$|.css$/,
     //         // 对超过10KB的文件进行压缩
     //         threshold: 10240,
     //         // 不删除源文件，主要是兼容不支持gzip的服务器
     //         deleteOriginalAssets: false,
-    //       })
-    //     : return void,
+    //       });
+    //     }
+    //   })(),
     // ],
   },
 
@@ -47,6 +44,22 @@ module.exports = {
       args[0].title = `${process.env.VUE_APP_NAME} - ${process.env.VUE_APP_DESCRIPTION}`;
       return args;
     });
+
+    // 开发环境下的webpack配置
+    if (process.env.NODE_ENV === "production") {
+      config.plugins.delete("preload");
+      config.plugins.delete("prefetch");
+      config.plugin("compression").use(ComporessionPlugin, [
+        {
+          // 正则匹配文件后缀
+          test: /.js$|.html$|.css$/,
+          // 对超过10KB的文件进行压缩
+          threshold: 1,
+          // 不删除源文件，主要是兼容不支持gzip的服务器
+          deleteOriginalAssets: false,
+        },
+      ]);
+    }
   },
 
   // css相关配置
