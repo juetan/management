@@ -1,6 +1,6 @@
 const state = {
   // 用户令牌
-  token: localStorage.getItem("ACCESS_TOKEN"),
+  token: localStorage.getItem("acess_token"),
   // 用户名
   name: "",
   // 用户简介
@@ -11,20 +11,20 @@ const state = {
 
 const mutations = {
   // 设置用户令牌
-  SET_TOKEN: (state, token) => {
-    localStorage.setItem("ACCESS_TOKEN", token);
+  set_token: (state, token) => {
+    localStorage.setItem("acess_token", token);
     state.token = token;
   },
   // 设置用户名
-  SET_NAME: (state, name) => {
+  set_name: (state, name) => {
     state.name = name;
   },
   // 设置用户简介
-  SET_DESCRIPTION: (state, description) => {
+  set_description: (state, description) => {
     state.description = description;
   },
   // 设置用户头像
-  SET_AVATAR: (state, avatar) => {
+  set_avatar: (state, avatar) => {
     state.avatar = avatar;
   },
 };

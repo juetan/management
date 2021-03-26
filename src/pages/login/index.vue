@@ -60,7 +60,7 @@ export default {
       this.$refs.form.validate(valid=>{
         if (valid) {
           this.$api.user.auth(this.formData).then(data=>{
-            this.$store.commit('user/SET_TOKEN',data.token)
+            this.$store.commit('user/set_token',data.token)
             let self = this
             this.$message({
               message: data.message,
