@@ -1,5 +1,26 @@
 export default [
   {
+    path: "/",
+    name: "layout",
+    redirect: "/home",
+    meta: { title: "账号登录", icon: "xxx" },
+    component: () => import("@/pages/layout"),
+    children: [
+      {
+        path: "/home",
+        name: "home",
+        meta: { title: "系统首页", icon: "iconfont icon-shouye" },
+        component: () => import("@/pages/app/home"),
+      },
+      {
+        path: "/table",
+        name: "table",
+        meta: { title: "设备管理", icon: "el-icon-menu" },
+        component: () => import("@/pages/app/table"),
+      },
+    ],
+  },
+  {
     path: "/login",
     name: "login",
     meta: { title: "账号登录", icon: "xxx" },

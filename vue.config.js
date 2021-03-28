@@ -17,23 +17,6 @@ module.exports = {
       // 因为使用本地域名，此值需设为true，避免出现Invalid Host header的情况
       disableHostCheck: true,
     },
-
-    // // webpack插件配置
-    // plugins: [
-    //   // 生产环境进行gzip压缩
-    //   (() => {
-    //     if (process.env.NODE_ENV === "production") {
-    //       return new ComporessionPlugin({
-    //         // 正则匹配文件后缀
-    //         test: /.js$|.html$|.css$/,
-    //         // 对超过10KB的文件进行压缩
-    //         threshold: 10240,
-    //         // 不删除源文件，主要是兼容不支持gzip的服务器
-    //         deleteOriginalAssets: false,
-    //       });
-    //     }
-    //   })(),
-    // ],
   },
 
   // 链式配置webpack
@@ -45,10 +28,40 @@ module.exports = {
       return args;
     });
 
-    // 开发环境下的webpack配置
+    // 配置模块依赖分析，可用于文件体积优化的参考
+    config
+      .plugin("BundleAnalyzerPlugin")
+      .use(require("webpack-bundle-analyzer").BundleAnalyzerPlugin, [
+        {
+          //  `server`，`static`或`disabled`。
+          analyzerMode: "server",
+          //  将在“服务器”模式下使用的主机启动HTTP服务器。
+          analyzerHost: "127.0.0.1",
+          //  将在“服务器”模式下使用的端口启动HTTP服务器。
+          analyzerPort: 12345,
+          //  路径捆绑，将在`static`模式下生成的报告文件。
+          reportFilename: "report.html",
+          //  `stat`，`parsed`或者`gzip`中的一个。
+          defaultSizes: "parsed",
+          //  在默认浏览器中自动打开报告
+          openAnalyzer: false,
+          //  如果为true，则Webpack Stats JSON文件将在bundle输出目录中生成
+          generateStatsFile: false,
+          //  如果`generateStatsFile`为`true`，将会生成Webpack Stats JSON文件的名字。
+          statsFilename: "stats.json",
+          //  在这里查看更多选项：https：  //github.com/webpack/webpack/blob/webpack-1/lib/Stats.js#L21
+          statsOptions: null,
+          // 'info'，'warn'，'error'或'silence'。
+          logLevel: "info",
+        },
+      ]);
+
+    // 生产环境下的webpack配置
     if (process.env.NODE_ENV === "production") {
       config.plugins.delete("preload");
       config.plugins.delete("prefetch");
+
+      // 将文件压缩成.gz格式
       config.plugin("compression").use(ComporessionPlugin, [
         {
           // 正则匹配文件后缀

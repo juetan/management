@@ -2,7 +2,7 @@
   <div>
     <div class="header-aside" :class="collapsed ? 'header-aside-collapsed' : ''">
       <img :src="require('./logo.png')" alt="" width="30px" class="header-logo" id="msetting1">
-      管理系统
+      {{appname}}
     </div>
     <!-- 如何使用flex或grid实现一个元素在左侧，其余元素在右侧：margin-right: auto --->
     <div class="header-main" :class="collapsed ? 'header-main-collapsed' : ''"> 
@@ -10,15 +10,15 @@
         <el-button icon="el-icon-more-outline" type="text" @click="handleCollapse" id="mcollapse"></el-button>
       </div>
       <div class="header-right">
-        <el-tooltip class="header-item" effect="dark" content="系统设置" placement="bottom" :open-delay="500" >
+        <el-tooltip class="header-item" effect="dark" :content="$t('layout.settingTip')" placement="bottom" :open-delay="500" >
           <i class="el-icon-setting iconFont toogle-full" @click="handleEditSystemSetting" id="msetting"></i>
         </el-tooltip>
 
-        <el-tooltip class="header-item" effect="dark" content="全屏显示" placement="bottom" :open-delay="500" >
+        <el-tooltip class="header-item" effect="dark" :content="$t('layout.fullTip')" placement="bottom" :open-delay="500" >
           <i class="el-icon-full-screen iconFont toogle-full" @click="handleFullscreen" id="mfullscreen"></i>
         </el-tooltip>
 
-        <el-tooltip class="header-item" effect="dark" content="使用说明" placement="bottom" :open-delay="500" >
+        <el-tooltip class="header-item" effect="dark" :content="$t('layout.helpTip')" placement="bottom" :open-delay="500" >
           <!-- 由于tooltip或是其他的原因，必须添加.prevent.top修饰器，否则无法正常显示dirver -->
           <i class="el-icon-warning-outline iconFont toogle-full" @click.prevent.stop="handleDriver" ></i>
         </el-tooltip>
@@ -31,19 +31,29 @@
           </el-dropdown-menu>
         </el-dropdown>
           
-        <el-dropdown class="header-item" trigger="click" :visible-change="handleDropdown">
+        <el-dropdown class="header-item" trigger="click">
           <div>
             <el-avatar :src="require('./avatar.jpg')" size="small" style="vertical-align: middle"></el-avatar>
             <span class="username">admin</span>
             <i class="el-icon-caret-bottom"></i> 
           </div>
 
-          <el-dropdown-menu slot="dropdown" :visible-change="handleDropdown">
-            <el-dropdown-item>系统首页</el-dropdown-item>
-            <el-dropdown-item>关于网站</el-dropdown-item>
-            <el-dropdown-item>绝弹笔记</el-dropdown-item>
-            <el-dropdown-item>Github</el-dropdown-item>
-            <el-dropdown-item>退出登录</el-dropdown-item>
+          <el-dropdown-menu slot="dropdown">
+            <el-dropdown-item>
+              <router-link :to="{ path: '/' }">{{ $t('layout.home') }}</router-link>
+            </el-dropdown-item>
+            <el-dropdown-item>
+              <a href="https://github.com/juetan/management">{{ $t('layout.repository') }}</a>
+            </el-dropdown-item>
+            <el-dropdown-item>
+              <a href="http://www.juetan.cn">{{ $t('layout.devnote') }}</a>
+            </el-dropdown-item>
+            <el-dropdown-item>
+              <a href="https://www.juetan.cn">{{ $t('layout.myblog') }}</a>
+            </el-dropdown-item>
+            <el-dropdown-item divided>
+              <span class="logout" @click="handleLogout" >{{ $t('layout.logout') }}</span>
+            </el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
       </div>
@@ -52,12 +62,12 @@
 </template>
 
 <script>
-import screenfull from 'screenfull'
-import driver from '@/utils/driver'
-import { driverSteps } from '@/api/application'
+// import screenfull from 'screenfull'
+// import driver from '@/utils/driver'
+// import { driverSteps } from '@/api/application'
 
 export default {
-  name: "vueHeader",
+  name: "navtop",
   data() {
     return {
       driverSteps: null,
@@ -66,31 +76,44 @@ export default {
   },
   computed: {
     collapsed() {
-      return this.$store.state.navbar.collapsed
+      return this.$store.state.default.collapsed
     },
     zhDisabled() {
       return this.$i18n.locale==='zh'
     },
     enDisabled() {
       return this.$i18n.locale==='en'
+    },
+    appname() {
+      return this.$store.state.default.name
     }
   },
   methods: {
     handleCollapse() {
-      this.$store.commit('navbar/SET_COLLAPSED')
+      this.$store.commit('default/trigger_collapsed')
     },
     handleFullscreen() {
-      screenfull.toggle()
+      // screenfull.toggle()
     },
     handleEditSystemSetting() {
       this.$confirm('敬请期待!','提示')
     },
     handleDriver() {
-      driver.defineSteps(driverSteps);
-      driver.start();
+      // driver.defineSteps(driverSteps);
+      // driver.start();
     },
     handleSetLangague(lang) {
       this.$i18n.locale = lang;
+    },
+    handleLogout() {
+      this.$confirm('即将退出登录，是否继续？', '退出提示', {
+        confirmButtonText: '确定',
+        concelButtonText: '取消',
+        type: 'warning'
+      }).then(()=>{
+        this.$store.commit('user/logout_user');
+        this.$router.push('/login')
+      })
     }
   }
 };
@@ -147,7 +170,7 @@ export default {
     overflow: hidden;
   }
   .header-logo {
-    vertical-align: -12px;
+    vertical-align: -10px;
     margin-right: 10px;
   }
 </style>

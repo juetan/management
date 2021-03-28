@@ -14,4 +14,14 @@ export default {
     byemail: "email",
     loginedtip: "login success,  will back home page",
   },
+  layout: {
+    settingTip: "setting",
+    fullTip: "screen full",
+    helpTip: "help",
+    home: "home",
+    repository: "github",
+    devnote: "docs",
+    myblog: "blog",
+    logout: "logout",
+  },
 };

@@ -89,6 +89,8 @@ export default {
     width: 100%;
     height: 100%;
     background-color: rgb(234, 243, 255);
+    background: url('~@/assets/images/background.jpg');
+    background-size: 100% auto;
   }
   .login {
     display: flex;

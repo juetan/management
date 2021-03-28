@@ -7,3 +7,5 @@ Vue.use(ElementUI, {
   size: "medium",
   i18n: (key, value) => i18n.t(key, value),
 });
+
+export { Message as message } from "element-ui";

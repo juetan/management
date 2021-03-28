@@ -14,4 +14,14 @@ export default {
     byemail: "邮箱登录",
     loginedtip: "登录成功，即将跳转首页",
   },
+  layout: {
+    settingTip: "系统设置",
+    fullTip: "全屏显示",
+    helpTip: "使用说明",
+    home: "系统首页",
+    repository: "仓库地址",
+    devnote: "开发笔记",
+    myblog: "个人博客",
+    logout: "退出登录",
+  },
 };

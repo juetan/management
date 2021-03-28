@@ -1,15 +1,20 @@
 <template>
-  <el-container class="app-container">
-    <el-header height="50px" class="app-header">
-      <!-- 组件：顶部导航 -->
-      <vue-header></vue-header>
+  <!-- 使用element-ui的布局容器，可自适应 -->
+  <el-container class="layout-container">
+    <!-- 顶部导航 -->
+    <el-header height="50px" class="layout-header">
+      <vue-navtop></vue-navtop>
     </el-header>
-    <el-container class="app-main">
-      <el-aside :width="collapsed ? '64px' : '200px'" class="app-sidebar">
-        <!-- 组件：左侧导航 -->
-        <vue-menu></vue-menu>
+
+    <!-- 布局容器 -->
+    <el-container class="layout-main">
+        <!-- 左侧导航 -->
+      <el-aside :width="collapsed ? '64px' : '200px'" class="layout-sidebar">
+        <vue-navmenu></vue-navmenu>
       </el-aside>
-      <el-main class="app-viewer">
+
+      <!-- 右侧内容区 -->
+      <el-main class="layout-viewer">
         <!-- 渐变效果，用以配合进度条 -->
         <transition name="fade-transform" mode="out-in"> 
           <router-view></router-view>
@@ -20,30 +25,28 @@
 </template>
 
 <script>
-import vueHeader from './components/header'
-import vueMenu from './vue-menu/index'
+import vueNavtop from './components/navtop'
+import vueNavmenu from './components/navmenu'
 
 export default {
-  name: "application",
+  name: "layout",
   data() {
     return {
-      menus: null,
+      menuList: null,
       visibled: false,
     }
   },
   computed: {
     collapsed() {
       return this.$store.state.default.collapsed
-    }
+    },
   },
   created() {
-    getNavList().then(data=>{
-      this.menus = data
-    })
+    
   },
   components: {
-    vueHeader,
-    vueMenu
+    vueNavtop,
+    vueNavmenu
   }
 }
 </script>
@@ -64,22 +67,22 @@ export default {
     transform: translateX(30px);
   }
   // 容器样式
-  .app-container {
+  .layout-container {
     height: 100%;
   }
-  .app-header {
+  .layout-header {
     box-shadow: 0 2px 2px rgba(0,0,0,.05);
     padding: 0;
     line-height: 50px    
   }
-  .app-main {
+  .layout-main {
     height: calc(100% - 50px);
   }
-  .app-sidebar {
+  .layout-sidebar {
     background: #324554;
     transition: all .3s;
   }
-  .app-viewer {
+  .layout-viewer {
     background-color: #f0f3f4;
   }
   .el-aside {
