@@ -9,13 +9,13 @@ export default [
       {
         path: "/home",
         name: "home",
-        meta: { title: "系统首页", icon: "iconfont icon-shouye" },
+        meta: { title: "系统首页", icon: "icon-shouye" },
         component: () => import("@/pages/app/home"),
       },
       {
         path: "/table",
         name: "table",
-        meta: { title: "设备管理", icon: "el-icon-menu" },
+        meta: { title: "设备管理", icon: "icon-shebei" },
         component: () => import("@/pages/app/table"),
       },
     ],
