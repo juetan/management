@@ -63,15 +63,40 @@
 
 <script>
 // import screenfull from 'screenfull'
-// import driver from '@/utils/driver'
+import driver from '@/plugins/driver'
 // import { driverSteps } from '@/api/application'
 
 export default {
   name: "navtop",
   data() {
     return {
-      driverSteps: null,
-      langague: 'zh'
+      langague: 'zh',
+      steps: [
+        {
+          element: "#mcollapse",
+          popover: {
+            title: "折叠/展开",
+            description: "折叠或展开左侧导航菜单",
+            position: "bottom",
+          },
+        },
+        {
+          element: "#msetting",
+          popover: {
+            title: "系统设置",
+            description: "设置系统参数",
+            position: "left",
+          },
+        },
+        {
+          element: "#mfullscreen",
+          popover: {
+            title: "全屏显示",
+            description: "大屏展示",
+            position: "left",
+          },
+        },
+      ]
     };
   },
   computed: {
@@ -99,8 +124,8 @@ export default {
       this.$confirm('敬请期待!','提示')
     },
     handleDriver() {
-      // driver.defineSteps(driverSteps);
-      // driver.start();
+      driver.defineSteps(this.steps);
+      driver.start();
     },
     handleSetLangague(lang) {
       this.$i18n.locale = lang;

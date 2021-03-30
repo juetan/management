@@ -1,0 +1,19 @@
+div#driver-popover-item div.driver-popover-footer button {
+  background-color: #10c599;
+  color: white;
+  text-shadow: none;
+  border: none;
+  line-height: 1.8;
+  border-radius: 4px;
+}
+div#driver-popover-item .driver-popover-footer button.driver-disabled {
+  color: $disabled_color;
+  background: #f1f1f1;
+}
+div#driver-popover-item .driver-popover-footer button:hover {
+  background-color: $brand_color__hover;
+}
+
+div#driver-popover-item .driver-popover-footer button:active {
+  background-color: $brand_color__active;
+}
