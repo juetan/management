@@ -1,5 +1,7 @@
+@import '@/assets/styles/themes/default.scss';
+
 div#driver-popover-item div.driver-popover-footer button {
-  background-color: #10c599;
+  background-color: $--color-primary;
   color: white;
   text-shadow: none;
   border: none;
@@ -7,13 +9,13 @@ div#driver-popover-item div.driver-popover-footer button {
   border-radius: 4px;
 }
 div#driver-popover-item .driver-popover-footer button.driver-disabled {
-  color: $disabled_color;
+  color: $--color-text-placeholder;
   background: #f1f1f1;
 }
 div#driver-popover-item .driver-popover-footer button:hover {
-  background-color: $brand_color__hover;
+  background-color: $--color-primary-light;
 }
 
 div#driver-popover-item .driver-popover-footer button:active {
-  background-color: $brand_color__active;
+  background-color: $--color-primary-dark;
 }

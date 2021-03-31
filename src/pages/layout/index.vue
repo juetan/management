@@ -14,7 +14,7 @@
       </el-aside>
 
       <!-- 右侧内容区 -->
-      <el-main class="layout-viewer">
+      <el-main class="layout-viewer" id="viewer">
         <!-- 渐变效果，用以配合进度条 -->
         <transition name="fade-transform" mode="out-in"> 
           <router-view></router-view>

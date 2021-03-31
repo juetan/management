@@ -1,4 +1,5 @@
 const ComporessionPlugin = require("compression-webpack-plugin");
+// import mocker from "/mock/server";
 
 module.exports = {
   // 公共路径，因为要部署到GitHub pages上，所以将生产环境的值改成仓库名称
@@ -16,6 +17,7 @@ module.exports = {
       port: "80",
       // 因为使用本地域名，此值需设为true，避免出现Invalid Host header的情况
       disableHostCheck: true,
+      // before: mocker,
     },
   },
 

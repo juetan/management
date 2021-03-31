@@ -1,4 +1,5 @@
 import Vue from "vue";
+import request from "./request";
 
 const moduleFiles = require.context("./modules", true, /\.js$/);
 
@@ -18,5 +19,7 @@ const api = {
 };
 
 Vue.prototype.$api = api;
+
+Vue.prototype.$request = request;
 
 export default api;

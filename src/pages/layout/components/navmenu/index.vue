@@ -1,5 +1,5 @@
 <template>
-  <el-scrollbar>
+  <el-scrollbar id="navmenu">
     <!-- 如需路由正确工作，需添加router属性 -->
     <el-menu 
       :default-active="$route.path" 

@@ -1,5 +1,6 @@
 import Driver from "driver.js";
 import "driver.js/dist/driver.min.css";
+import "@/assets/styles/vendors/driver.scss";
 
 // 将driver实例挂载到vue原型上
 const driver = new Driver({

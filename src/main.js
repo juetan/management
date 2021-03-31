@@ -1,5 +1,7 @@
 import Vue from "vue";
 
+import "/mock/server.js";
+
 // 状态管理
 import store from "@/store";
 

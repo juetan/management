@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="navtop">
     <div class="header-aside" :class="collapsed ? 'header-aside-collapsed' : ''">
       <img :src="require('./logo.png')" alt="" width="30px" class="header-logo" id="msetting1">
       {{appname}}
@@ -24,10 +24,10 @@
         </el-tooltip>
         
         <el-dropdown @command="handleSetLangague" >
-          <i class="el-icon-more-outline iconFont toogle-full header-item" ></i>
+          <i class="icon-lang toogle-full header-item" ></i>
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item command="zh" :disabled="zhDisabled">中文</el-dropdown-item>
-            <el-dropdown-item command="en" :disabled="enDisabled">English</el-dropdown-item>
+            <el-dropdown-item command="zh" :disabled="zhDisabled"><i class="icon-zh"></i> 中文</el-dropdown-item>
+            <el-dropdown-item command="en" :disabled="enDisabled"><i class="icon-en"></i> English</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
           
@@ -62,9 +62,8 @@
 </template>
 
 <script>
-// import screenfull from 'screenfull'
+import screenfull from 'screenfull'
 import driver from '@/plugins/driver'
-// import { driverSteps } from '@/api/application'
 
 export default {
   name: "navtop",
@@ -85,7 +84,7 @@ export default {
           popover: {
             title: "系统设置",
             description: "设置系统参数",
-            position: "left",
+            position: "bottom",
           },
         },
         {
@@ -118,10 +117,13 @@ export default {
       this.$store.commit('default/trigger_collapsed')
     },
     handleFullscreen() {
-      // screenfull.toggle()
+      screenfull.toggle()
     },
     handleEditSystemSetting() {
-      this.$confirm('敬请期待!','提示')
+      // this.$confirm('敬请期待!','提示')
+      this.$request('/example').then(data=>{
+        console.log(data);
+      })
     },
     handleDriver() {
       driver.defineSteps(this.steps);
@@ -132,8 +134,6 @@ export default {
     },
     handleLogout() {
       this.$confirm('即将退出登录，是否继续？', '退出提示', {
-        confirmButtonText: '确定',
-        concelButtonText: '取消',
         type: 'warning'
       }).then(()=>{
         this.$store.commit('user/logout_user');
