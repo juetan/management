@@ -66,16 +66,16 @@ module.exports = {
       config.plugins.delete("prefetch");
 
       // 将文件压缩成.gz格式
-      config.plugin("compression").use(ComporessionPlugin, [
-        {
-          // 正则匹配文件后缀
-          test: /.js$|.html$|.css$/,
-          // 对超过10KB的文件进行压缩
-          threshold: 1,
-          // 不删除源文件，主要是兼容不支持gzip的服务器
-          deleteOriginalAssets: false,
-        },
-      ]);
+      // config.plugin("compression").use(ComporessionPlugin, [
+      //   {
+      //     // 正则匹配文件后缀
+      //     test: /.js$|.html$|.css$/,
+      //     // 对超过10KB的文件进行压缩
+      //     threshold: 1,
+      //     // 不删除源文件，主要是兼容不支持gzip的服务器
+      //     deleteOriginalAssets: false,
+      //   },
+      // ]);
     }
   },
 
