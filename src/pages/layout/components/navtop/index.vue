@@ -11,7 +11,7 @@
       </div>
       <div class="header-right">
         <el-tooltip class="header-item" effect="dark" :content="$t('layout.settingTip')" placement="bottom" :open-delay="500" >
-          <i class="el-icon-setting iconFont toogle-full" @click="handleEditSystemSetting" id="msetting"></i>
+          <i class="icon-skin iconFont toogle-full" @click="handleEditSystemSetting" id="msetting"></i>
         </el-tooltip>
 
         <el-tooltip class="header-item" effect="dark" :content="$t('layout.fullTip')" placement="bottom" :open-delay="500" >
@@ -121,9 +121,9 @@ export default {
     },
     handleEditSystemSetting() {
       // this.$confirm('敬请期待!','提示')
-      this.$request('/example').then(data=>{
-        console.log(data);
-      })
+      // this.$request('/example').then(data=>{
+      //   console.log(data);
+      // })
     },
     handleDriver() {
       driver.defineSteps(this.steps);
