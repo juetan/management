@@ -19,3 +19,8 @@ $--color-regular: #606266;
 $--color-primary-hover: mix($--color-white,$--color-primary,20%);
 /* 品牌色点击色 */
 $--color-primary-active: mix($--color-black,$--color-primary,20%);
+
+$--color-text-placeholder: #909399;
+
+$--color-primary-light: mix($--color-white,$--color-primary,20%);
+$--color-primary-dark: mix($--color-black,$--color-primary,20%);

@@ -46,7 +46,7 @@
               <a href="https://github.com/juetan/management">{{ $t('layout.repository') }}</a>
             </el-dropdown-item>
             <el-dropdown-item>
-              <a href="http://www.juetan.cn">{{ $t('layout.devnote') }}</a>
+              <a href="http://www.juetan.cn/tag/管理系统">{{ $t('layout.devnote') }}</a>
             </el-dropdown-item>
             <el-dropdown-item>
               <a href="https://www.juetan.cn">{{ $t('layout.myblog') }}</a>

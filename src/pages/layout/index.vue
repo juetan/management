@@ -5,14 +5,12 @@
     <el-header height="50px" class="layout-header">
       <vue-navtop></vue-navtop>
     </el-header>
-
     <!-- 布局容器 -->
     <el-container class="layout-main">
         <!-- 左侧导航 -->
       <el-aside :width="collapsed ? '64px' : '200px'" class="layout-sidebar">
         <vue-navmenu></vue-navmenu>
       </el-aside>
-
       <!-- 右侧内容区 -->
       <el-main class="layout-viewer" id="viewer">
         <!-- 渐变效果，用以配合进度条 -->

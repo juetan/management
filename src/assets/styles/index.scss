@@ -1,8 +1,16 @@
-// 变量
-@import './abstracts/variables.scss';
+// 颜色变量
+@import './base-variables.scss';
 // 重置浏览器样式
-@import './common/normalize.scss';
-// 布局样式
-@import './layout/index.scss';
+@import './base-normalize.scss';
 // iconfont图标
 @import '~@/assets/fonts/iconfont.scss';
+// 进度条样式重写
+@import './vendor-nprogress.scss';
+
+// vue根元素样式
+#app {
+  width: 100vw;
+  min-width: 1440px;
+  height: 100vh;
+  overflow: hidden;
+}

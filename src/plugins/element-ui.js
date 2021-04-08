@@ -1,7 +1,7 @@
 import Vue from "vue";
 import i18n from "@/lang";
 import ElementUI from "element-ui";
-import "@/assets/styles/vendors/element-variables.scss";
+import "@/assets/styles/vendor-element.scss";
 
 Vue.use(ElementUI, {
   size: "medium",
