@@ -13,9 +13,9 @@ div#driver-popover-item .driver-popover-footer button.driver-disabled {
   background: #f1f1f1;
 }
 div#driver-popover-item .driver-popover-footer button:hover {
-  background-color: $--color-primary-light;
+  background-color: $--color-primary-hover;
 }
 
 div#driver-popover-item .driver-popover-footer button:active {
-  background-color: $--color-primary-dark;
+  background-color: $--color-primary-active;
 }

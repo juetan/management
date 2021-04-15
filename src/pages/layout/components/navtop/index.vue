@@ -11,7 +11,7 @@
       </div>
       <div class="header-right">
         <el-tooltip class="header-item" effect="dark" :content="$t('layout.settingTip')" placement="bottom" :open-delay="500" >
-          <i class="icon-skin iconFont toogle-full" @click="handleEditSystemSetting" id="msetting"></i>
+          <i class="el-icon-setting toogle-full" @click="handleEditSystemSetting" id="msetting"></i>
         </el-tooltip>
 
         <el-tooltip class="header-item" effect="dark" :content="$t('layout.fullTip')" placement="bottom" :open-delay="500" >
@@ -22,12 +22,20 @@
           <!-- 由于tooltip或是其他的原因，必须添加.prevent.top修饰器，否则无法正常显示dirver -->
           <i class="el-icon-warning-outline iconFont toogle-full" @click.prevent.stop="handleDriver" ></i>
         </el-tooltip>
+
+        <el-dropdown @command="handleThemeColorChange" >
+          <i class="icon-skin toogle-full header-item" ></i>
+          <el-dropdown-menu slot="dropdown">
+            <el-dropdown-item command="green"><i class="icon-zh"></i>青青果园</el-dropdown-item>
+            <el-dropdown-item command="blue"><i class="icon-en"></i> 蓝色理想</el-dropdown-item>
+          </el-dropdown-menu>
+        </el-dropdown>
         
         <el-dropdown @command="handleSetLangague" >
           <i class="icon-lang toogle-full header-item" ></i>
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item command="zh" :disabled="zhDisabled"><i class="icon-zh"></i> 中文</el-dropdown-item>
-            <el-dropdown-item command="en" :disabled="enDisabled"><i class="icon-en"></i> English</el-dropdown-item>
+            <el-dropdown-item command="zh" :disabled="$i18n.locale==='zh'"><i class="icon-zh"></i> 中文</el-dropdown-item>
+            <el-dropdown-item command="en" :disabled="$i18n.locale==='en'"><i class="icon-en"></i> English</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
           
@@ -64,6 +72,7 @@
 <script>
 import screenfull from 'screenfull'
 import driver from '@/plugins/driver'
+import { replaceThemeColors } from '@/plugins/theme-replacer';
 
 export default {
   name: "navtop",
@@ -102,36 +111,44 @@ export default {
     collapsed() {
       return this.$store.state.default.collapsed
     },
-    zhDisabled() {
-      return this.$i18n.locale==='zh'
-    },
-    enDisabled() {
-      return this.$i18n.locale==='en'
-    },
     appname() {
       return this.$store.state.default.name
     }
   },
   methods: {
+    // 右侧菜单栏折叠
     handleCollapse() {
       this.$store.commit('default/trigger_collapsed')
     },
+    // 全屏显示
     handleFullscreen() {
       screenfull.toggle()
     },
+    // 系统设置
     handleEditSystemSetting() {
       // this.$confirm('敬请期待!','提示')
       // this.$request('/example').then(data=>{
       //   console.log(data);
       // })
     },
+    // 引导指示
     handleDriver() {
       driver.defineSteps(this.steps);
       driver.start();
     },
+    // 切换主题
+    handleThemeColorChange(color) {
+      replaceThemeColors(color)
+    },
+    // 切换语言
     handleSetLangague(lang) {
       this.$i18n.locale = lang;
+      this.$message({
+        type: 'success',
+        message: '切换语言成功'
+      })
     },
+    // 退出登录
     handleLogout() {
       this.$confirm('即将退出登录，是否继续？', '退出提示', {
         type: 'warning'
@@ -184,7 +201,8 @@ export default {
     box-sizing: border-box;
     text-align: center;
     &:hover {
-      background: #f2f6fc;
+      color: $--color-primary;
+      background: $--color-primary-lighter;
     }
   }
   .header-main-collapsed {

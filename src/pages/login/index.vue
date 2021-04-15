@@ -118,7 +118,7 @@ export default {
   }
   .welcome {
     font-size: 14px;
-    color: $--color-regular;
+    color: $--color-text-regular;
   }
   .remember {
     float: left;
@@ -128,7 +128,7 @@ export default {
   }
   .method {
     font-size: 13px;
-    color: $--color-regular;
+    color: $--color-text-regular;
     text-align: center;
     margin-top: 16px;
   }
