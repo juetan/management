@@ -1,64 +1,66 @@
 <template>
   <div id="navtop">
     <div class="header-aside" :class="collapsed ? 'header-aside-collapsed' : ''">
+      <!-- 网站LOGO -->
       <img :src="require('./logo.png')" alt="" width="30px" class="header-logo" id="msetting1">
+      <!-- 网站标题 -->
       {{ $t('system.title') }}
     </div>
     <!-- 如何使用flex或grid实现一个元素在左侧，其余元素在右侧：margin-right: auto --->
-    <div class="header-main" :class="collapsed ? 'header-main-collapsed' : ''"> 
+    <div class="header-main" :class="collapsed ? 'header-main-collapsed' : ''">
+      <!-- 折叠/展开左侧菜单栏 -->
       <div class="header-left">
         <el-button icon="el-icon-more-outline" type="text" @click="handleCollapse" id="mcollapse"></el-button>
       </div>
       <div class="header-right">
+        <!-- 网站设置 -->
         <el-tooltip class="header-item" effect="dark" :content="$t('layout.settingTip')" placement="bottom" :open-delay="500" >
           <i class="el-icon-setting toogle-full" @click="handleEditSystemSetting" id="msetting"></i>
         </el-tooltip>
-
+        <!-- 全屏显示 -->
         <el-tooltip class="header-item" effect="dark" :content="$t('layout.fullTip')" placement="bottom" :open-delay="500" >
           <i class="el-icon-full-screen iconFont toogle-full" @click="handleFullscreen" id="mfullscreen"></i>
         </el-tooltip>
-
+        <!-- 操作引导 -->
         <el-tooltip class="header-item" effect="dark" :content="$t('layout.helpTip')" placement="bottom" :open-delay="500" >
           <!-- 由于tooltip或是其他的原因，必须添加.prevent.top修饰器，否则无法正常显示dirver -->
           <i class="el-icon-warning-outline iconFont toogle-full" @click.prevent.stop="handleDriver" ></i>
         </el-tooltip>
-
-        <el-dropdown @command="handleThemeColorChange" >
-          <i class="icon-skin toogle-full header-item" ></i>
-          <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item command="green"><i class="icon-zh"></i>青青果园</el-dropdown-item>
-            <el-dropdown-item command="blue"><i class="icon-en"></i> 蓝色理想</el-dropdown-item>
-          </el-dropdown-menu>
-        </el-dropdown>
-        
-        <el-dropdown @command="handleSetLangague" >
-          <i class="icon-lang toogle-full header-item" ></i>
-          <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item command="zh" :disabled="$i18n.locale==='zh'"><i class="icon-zh"></i> 中文</el-dropdown-item>
-            <el-dropdown-item command="en" :disabled="$i18n.locale==='en'"><i class="icon-en"></i> English</el-dropdown-item>
-          </el-dropdown-menu>
-        </el-dropdown>
-          
+        <!-- 切换主题 -->
+        <el-tooltip class="header-item" effect="dark" :content="$t('layout.switchTheme')" placement="bottom" :open-delay="500" >
+          <i class="icon-skin" @click="handleSwitchTheme" ></i>
+        </el-tooltip>
+        <!-- 切换语言 -->
+        <el-tooltip class="header-item" effect="dark" :content="$t('layout.switchLanguage')" placement="bottom" :open-delay="500" >
+          <i :class="langIcon" @click="handleSwitchLangague" ></i>
+        </el-tooltip>
+        <!-- 用户面板 -->
         <el-dropdown class="header-item" trigger="click">
           <div>
+            <!-- 用户头像 -->
             <el-avatar :src="require('./avatar.jpg')" size="small" style="vertical-align: middle"></el-avatar>
+            <!-- 用户名称 -->
             <span class="username">admin</span>
             <i class="el-icon-caret-bottom"></i> 
           </div>
-
           <el-dropdown-menu slot="dropdown">
+            <!-- 首页链接 -->
             <el-dropdown-item>
               <router-link :to="{ path: '/' }">{{ $t('layout.home') }}</router-link>
             </el-dropdown-item>
+            <!-- Github仓库链接 -->
             <el-dropdown-item>
               <a href="https://github.com/juetan/management">{{ $t('layout.repository') }}</a>
             </el-dropdown-item>
+            <!-- 开发文档链接 -->
             <el-dropdown-item>
-              <a href="http://www.juetan.cn/tag/管理系统">{{ $t('layout.devnote') }}</a>
+              <a href="http://www.juetan.cn/tag/management">{{ $t('layout.devnote') }}</a>
             </el-dropdown-item>
+            <!-- 个人博客链接 -->
             <el-dropdown-item>
               <a href="https://www.juetan.cn">{{ $t('layout.myblog') }}</a>
             </el-dropdown-item>
+            <!-- 退出登录 -->
             <el-dropdown-item divided>
               <span class="logout" @click="handleLogout" >{{ $t('layout.logout') }}</span>
             </el-dropdown-item>
@@ -111,8 +113,8 @@ export default {
     collapsed() {
       return this.$store.state.default.collapsed
     },
-    appname() {
-      return this.$store.state.default.name
+    langIcon() {
+      return 'icon-'+this.$store.state.default.language
     }
   },
   methods: {
@@ -137,13 +139,19 @@ export default {
       driver.start();
     },
     // 切换主题
-    handleThemeColorChange(color) {
-      replaceThemeColors(color)
+    handleSwitchTheme() {
+      let theme = this.$store.state.default.themeColors ==='green' ? 'blue' : 'green';
+      replaceThemeColors(theme).then(()=>{
+        this.$message({
+          type: 'success',
+          message: this.$t('layout.switchThemeInfo')
+        })
+      })
     },
     // 切换语言
-    handleSetLangague(lang) {
-      this.$i18n.locale = lang;
-      this.$store.commit('default/set_language',lang);
+    handleSwitchLangague() {
+      this.$i18n.locale = this.$i18n.locale==='zh' ? 'en' : 'zh';
+      this.$store.commit('default/set_language',this.$i18n.locale);
       this.$message({
         type: 'success',
         message: this.$t('layout.switch')
@@ -151,6 +159,7 @@ export default {
     },
     // 退出登录
     handleLogout() {
+      // 弹窗确实退出操作
       this.$confirm(this.$t('layout.logoutConfirm'), this.$t('layout.logout'), {
         type: 'warning'
       }).then(()=>{

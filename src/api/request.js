@@ -2,12 +2,8 @@
 import axios from "axios";
 import store from "@/store";
 import i18n from "@/lang";
-import { message, loading } from "@/plugins/element-ui";
-
-// loading
-let loadinger;
-// 当前在任务队列中的请求数量
-let requestCount = 0;
+import loading from "@/helper/loading";
+import { message } from "@/plugins/element-ui";
 
 // 创建axio例
 const request = axios.create({
@@ -19,14 +15,8 @@ const request = axios.create({
 
 // 设置请求拦截器
 request.interceptors.request.use((config) => {
-  // 每次请求+1
-  requestCount++;
-  // 请求数据时显示loading
-  loadinger = loading.service({
-    spinner: "el-icon-loading",
-    text: i18n.t("request.loading"),
-    background: "transparent",
-  });
+  // 打开loading
+  loading.open();
   // 获取本地token
   const token = store.state.user.token;
   if (token) {
@@ -38,11 +28,8 @@ request.interceptors.request.use((config) => {
 
 // 设置相应拦截器
 request.interceptors.response.use((response) => {
-  // 只有全部都请求完成才关闭loading;
-  if (--requestCount === 0) {
-    // 关闭loading
-    loadinger.close();
-  }
+  // 关闭loading
+  loading.close();
   // 返回数据即可
   const data = response.data;
   // 判断自定义状态码
@@ -62,7 +49,7 @@ request.interceptors.response.use((response) => {
     // 弹窗提示错误信息
     message({
       type: "error",
-      message: data.message,
+      message: "请求错误：" + data.message,
     });
   } else {
     return data;

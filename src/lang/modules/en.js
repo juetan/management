@@ -25,6 +25,8 @@ export default {
     logout: "logout",
     switch: "switch to english",
     logoutConfirm: "Are you sure to logout?",
+    switchLanguage: "Switch Language",
+    switchTheme: "Notice: Current Theme has been changed",
   },
   dataTable: {
     dataList: "Data Table",

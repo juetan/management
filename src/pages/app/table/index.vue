@@ -293,5 +293,7 @@ export default {
   .status-error::before {
     background: $--color-info;
   }
-  
+  ::v-deep .el-pagination {
+    font-weight: 400;
+  }
 </style>

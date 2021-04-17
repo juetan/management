@@ -42,7 +42,6 @@ export function replaceThemeColors(color) {
 
   return client.changer.changeColor(options, Promise).then(() => {
     currentColors = "green";
-    console.log(options.newColors);
     store.commit("default/set_theme_colors", color);
   });
 }

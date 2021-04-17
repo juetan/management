@@ -23,8 +23,11 @@ export default {
     devnote: "开发笔记",
     myblog: "个人博客",
     logout: "退出登录",
-    switch: "已切换到中文",
+    switch: "提示：已切换到中文",
     logoutConfirm: "即将退出登录，是否继续？",
+    switchLanguage: "切换语言",
+    switchTheme: "切换主题",
+    switchThemeInfo: "提示：切换成功，当前主题已改变!",
   },
   dataTable: {
     dataList: "数据列表",
