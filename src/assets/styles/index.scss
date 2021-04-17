@@ -6,6 +6,9 @@
 @import '~@/assets/fonts/iconfont.scss';
 // 进度条样式重写
 @import './vendor-nprogress.scss';
+// 滚动条样式
+@import './layout-scrollbar.scss';
+
 
 // vue根元素样式
 #app {

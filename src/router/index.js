@@ -4,6 +4,7 @@ import normalRoutes from "./modules/normal-routes";
 import Nprogress from "@/plugins/nprogress";
 import store from "@/store";
 import { message } from "@/plugins/element-ui";
+import i18n from "@/lang";
 
 Vue.use(vueRouter);
 
@@ -27,7 +28,7 @@ router.beforeEach(function(to, from, next) {
   if (token) {
     if (to.path === "/login") {
       message({
-        message: "你已经登录，即将跳转首页",
+        message: i18n.t("router.loginedinfo"),
         type: "success",
         duration: 2000,
         onClose() {

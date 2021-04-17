@@ -1,0 +1,23 @@
+/*  滚动条样式：仅限于Webkit内核浏览器 */
+
+// 滚动条样式：width表示右侧滚动条的宽度，height表示底部滚动条的高度
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+// 滚动条轨道样式
+::-webkit-scrollbar-track {
+  background: rgba(0,0,0,.1);
+  border-radius: 0;
+}
+// 滚动条滑动块的样式
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: rgba(0,0,0,.25);
+  transition: color .2s ease 0s;
+  cursor: pointer;
+}
+// 滑动块悬浮样式
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(128,135,139,.8)
+}

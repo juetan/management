@@ -8,6 +8,8 @@
     <el-button type="primary" size="small" @click="handleSelectAll" icon="el-icon-document-copy">{{ $t('dataTable.selectAll') }}</el-button>
     <!-- 删除选中 -->
     <el-button type="danger" size="small" @click="handleDeleteSelection" icon="el-icon-delete" :disabled="!selectedData.length">{{ $t('dataTable.delectSelect') }}</el-button>
+    <!-- 重置搜索 -->
+    <el-button size="small" icon="el-icon-refresh" style="float: right" @click="handleResetSearch">{{ $t('dataTable.reset') }}</el-button>
     <!-- 搜索按钮 -->
     <el-button type="primary" size="small" icon="el-icon-search" style="float: right" @click="handleSearch">{{ $t('dataTable.search') }}</el-button>
     <!-- 搜索框 -->
@@ -96,7 +98,7 @@ export default {
       // 每页显示数量
       pageSizes: [10,15,20,30],
       // 每页显示数量
-      pageSize: 11,
+      pageSize: 10,
       // 当前页
       currentPage: 1,
       // 数据总量
@@ -186,6 +188,11 @@ export default {
       this.pageSize = 10
       // 更新表格数据
       this._updateTableData()
+    },
+    // 表格操作[6]: 重置搜索
+    handleResetSearch() {
+      this.searchKeyword = '';
+      this.handleSearch();
     },
 
     // 分页操作[1]: 更新分页大小显示

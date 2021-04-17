@@ -1,7 +1,7 @@
 export default {
   login: {
     title: "账号登录",
-    description: "Hello!,欢迎您登录后台管理系统！",
+    description: "Hello,欢迎您登录后台管理系统！",
     userplaceholder: "请输入用户名",
     passplaceholder: "请输入密码",
     uservalidator: "用户名不能为空，请检查用户名！",
@@ -55,13 +55,30 @@ export default {
     officeEquip: "办公设备",
     operationEquip: "运维设备",
     testEquip: "测试设备",
+    reset: "重置",
   },
   router: {
     login: "账号登录",
     home: "系统首页",
     datatable: "数据表格",
+    loginedinfo: "你已经登录，即将跳转首页",
+    card: "卡片视图",
+    markdown: "编辑文章",
   },
   system: {
     title: "绝弹管理系统",
+  },
+  request: {
+    loading: "请求数据中...",
+    error400: "请求错误",
+    error401: "未登录",
+    error403: "拒绝访问",
+    error404: "请求地址出错",
+    error500: "服务器内部错误",
+    error501: "请求方法暂不支持",
+    error502: "网关错误",
+    error503: "服务暂时不可用",
+    error504: "网关超时",
+    errorunknow: "未知错误",
   },
 };

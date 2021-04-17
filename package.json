@@ -13,6 +13,7 @@
     "driver.js": "^0.9.8",
     "echarts": "^4.9.0",
     "element-ui": "^2.15.1",
+    "mavon-editor": "^2.9.1",
     "mockjs": "^1.1.0",
     "nprogress": "^0.2.0",
     "screenfull": "^5.1.0",
