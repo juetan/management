@@ -1,5 +1,8 @@
 import Mock from "mockjs";
 
+Mock.setup({
+  timeout: 2000,
+});
 Mock.mock("/example", "get", {
   code: 2000,
   message: "成功请求到数据",
@@ -31,4 +34,21 @@ Mock.mock("/table", "get", {
       mark: "无",
     },
   ],
+});
+
+Mock.mock("/login", "post", (options) => {
+  const data = JSON.parse(options.body);
+  const username = data.username;
+  if (username === "juetan") {
+    return {
+      code: 2000,
+      message: "登录成功，即将跳转首页",
+      token: "www.juetan.cn",
+    };
+  } else {
+    return {
+      code: 4000,
+      message: "登录失败，请检查用户名和密码！",
+    };
+  }
 });

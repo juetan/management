@@ -9,3 +9,4 @@ Vue.use(ElementUI, {
 });
 
 export { Message as message } from "element-ui";
+export { Loading as loading } from "element-ui";

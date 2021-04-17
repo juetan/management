@@ -6,6 +6,9 @@ export default {
   auth(data) {
     return request.post(user.auth, data);
   },
+  login(data) {
+    return request.post("/login", data);
+  },
   // 新增用户
   create(data) {
     return request.post(user.create, data);

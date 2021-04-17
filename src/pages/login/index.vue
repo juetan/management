@@ -57,10 +57,14 @@ export default {
   },
   methods: {
     handleSubmit() {
+      // 校验表单数据，确保用户输入符合规则
       this.$refs.form.validate(valid=>{
         if (valid) {
-          this.$api.user.auth(this.formData).then(data=>{
+          // 网络请求数据
+          this.$api.user.login(this.formData).then(data=>{
+            // 更新本地令牌
             this.$store.commit('user/set_token',data.token)
+            // 弹窗提示并跳转首页
             let self = this
             this.$message({
               message: data.message,
@@ -71,8 +75,6 @@ export default {
               }
             })
           })
-        } else {
-          return false;
         }
       })
       
