@@ -7,6 +7,8 @@ const state = {
   description: process.env.VUE_APP_DESCRIPTION,
   // 主题色
   themeColors: localStorage.getItem("theme_colors"),
+  // 语言
+  language: localStorage.getItem("language") || "zh",
 };
 
 const mutations = {
@@ -16,8 +18,11 @@ const mutations = {
   },
   set_theme_colors: (state, color) => {
     state.themeColors = color;
-
     localStorage.setItem("theme_colors", color);
+  },
+  set_language: (state, lang) => {
+    state.language = lang;
+    localStorage.setItem("language", lang);
   },
 };
 

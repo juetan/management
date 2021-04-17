@@ -6,14 +6,14 @@
       <!-- 无子路由 -->
       <el-menu-item v-if="!route.children && !route.hidden" :key="route.path" :index="route.path" class="ment-item">
         <i :class="route.meta.icon"></i>
-        <span slot="title">{{ route.meta.title }}</span>
+        <span slot="title">{{ $t('router.'+route.meta.title) }}</span>
       </el-menu-item>
 
       <!-- 包含子路由 --> 
       <el-submenu v-else ref="subMenu" :key="route.path" :index="route.path" popper-append-to-body>
         <template slot="title">
           <i :class="route.meta.icon"></i>
-          <span slot="title">{{ route.meta.title }}</span>
+          <span slot="title">{{ $t('router.'+route.meta.title) }}</span>
         </template>
         <vue-menu-item :data="route.children"/> 
       </el-submenu>
@@ -36,10 +36,10 @@ export default {
 
 <style lang="scss" scoped>
 ::v-deep.el-menu-item [class^=icon-] {
-    margin-right: 5px;
-    width: 24px;
-    text-align: center;
-    font-size: 18px;
-    vertical-align: middle;
+  margin-right: 5px;
+  width: 24px;
+  text-align: center;
+  font-size: 18px;
+  vertical-align: middle;
 }
 </style>

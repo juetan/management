@@ -11,6 +11,18 @@ export const app = {
   title: "绝弹管理系统 - 遇到你不知道的风景",
 };
 
+export const theme = {
+  default: {
+    'color-primary': '#10c599',
+    'color-success': '#3c9',
+    'color-warning': 'f90',
+    'color-danger': '#f66',
+    'color-info': '#959595'
+  },
+  skylight: {
+
+  }
+}
 // const el = {
 //   0: "#409eff", // 无用
 //   1: "64,158,255", // 无用

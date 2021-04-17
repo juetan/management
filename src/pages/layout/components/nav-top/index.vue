@@ -2,7 +2,7 @@
   <div id="navtop">
     <div class="header-aside" :class="collapsed ? 'header-aside-collapsed' : ''">
       <img :src="require('./logo.png')" alt="" width="30px" class="header-logo" id="msetting1">
-      {{appname}}
+      {{ $t('system.title') }}
     </div>
     <!-- 如何使用flex或grid实现一个元素在左侧，其余元素在右侧：margin-right: auto --->
     <div class="header-main" :class="collapsed ? 'header-main-collapsed' : ''"> 
@@ -143,14 +143,15 @@ export default {
     // 切换语言
     handleSetLangague(lang) {
       this.$i18n.locale = lang;
+      this.$store.commit('default/set_language',lang);
       this.$message({
         type: 'success',
-        message: '切换语言成功'
+        message: this.$t('layout.switch')
       })
     },
     // 退出登录
     handleLogout() {
-      this.$confirm('即将退出登录，是否继续？', '退出提示', {
+      this.$confirm(this.$t('layout.logoutConfirm'), this.$t('layout.logout'), {
         type: 'warning'
       }).then(()=>{
         this.$store.commit('user/logout_user');

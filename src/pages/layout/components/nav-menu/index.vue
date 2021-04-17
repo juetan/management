@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import vueNavitem from '../navitem'
+import vueNavitem from '../nav-item'
 import routes from '@/router/modules/normal-routes'
 
 export default {

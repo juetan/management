@@ -23,8 +23,8 @@
 </template>
 
 <script>
-import vueNavtop from './components/navtop'
-import vueNavmenu from './components/navmenu'
+import vueNavtop from './components/nav-top'
+import vueNavmenu from './components/nav-menu'
 
 export default {
   name: "layout",
@@ -48,8 +48,6 @@ export default {
   }
 }
 </script>
-
-
 
 <style lang="scss" scoped>
   /* 渐变效果fade-transform */
