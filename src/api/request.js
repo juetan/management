@@ -54,6 +54,7 @@ request.interceptors.response.use((response) => {
       isError = true;
       break;
     default:
+      isError = true;
       break;
   }
   // 自定义状态码异常处理
