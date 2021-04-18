@@ -26,6 +26,27 @@ export default [
         component: () =>
           import(/* webpackChunkName: "chunk-markdown" */ "@/pages/app/card"),
       },
+      {
+        path: "/theme",
+        name: "theme",
+        meta: { title: "theme", icon: "icon-skin" },
+        component: () =>
+          import(/* webpackChunkName: "chunk-router" */ "@/pages/app/theme"),
+      },
+      {
+        path: "/language",
+        name: "language",
+        meta: { title: "language", icon: "icon-language1" },
+        component: () =>
+          import(/* webpackChunkName: "chunk-router" */ "@/pages/app/language"),
+      },
+      {
+        path: "/iconfont",
+        name: "iconfont",
+        meta: { title: "iconfont", icon: "icon-zh" },
+        component: () =>
+          import(/* webpackChunkName: "chunk-router" */ "@/pages/app/iconfont"),
+      },
     ],
   },
   {

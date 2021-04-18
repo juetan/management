@@ -46,23 +46,33 @@
           <el-dropdown-menu slot="dropdown">
             <!-- 首页链接 -->
             <el-dropdown-item>
-              <router-link :to="{ path: '/' }">{{ $t('layout.home') }}</router-link>
+              <router-link :to="{ path: '/' }">
+              <i class="icon-home"></i>
+              {{ $t('layout.home') }}</router-link>
             </el-dropdown-item>
             <!-- Github仓库链接 -->
             <el-dropdown-item>
-              <a href="https://github.com/juetan/management">{{ $t('layout.repository') }}</a>
+              <a href="https://github.com/juetan/management">
+              <i class="icon-github"></i>
+              {{ $t('layout.repository') }}</a>
             </el-dropdown-item>
             <!-- 开发文档链接 -->
             <el-dropdown-item>
-              <a href="http://www.juetan.cn/tag/management">{{ $t('layout.devnote') }}</a>
+              <a href="http://www.juetan.cn/tag/management">
+              <i class="el-icon-document"></i>
+              {{ $t('layout.devnote') }}</a>
             </el-dropdown-item>
             <!-- 个人博客链接 -->
             <el-dropdown-item>
-              <a href="https://www.juetan.cn">{{ $t('layout.myblog') }}</a>
+              <a href="https://www.juetan.cn">
+              <i class="el-icon-user"></i>
+              {{ $t('layout.myblog') }}</a>
             </el-dropdown-item>
             <!-- 退出登录 -->
             <el-dropdown-item divided>
-              <span class="logout" @click="handleLogout" >{{ $t('layout.logout') }}</span>
+              <span class="logout" @click="handleLogout" >
+                <i class="icon-exit"></i>
+                {{ $t('layout.logout') }}</span>
             </el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
@@ -225,5 +235,9 @@ export default {
   .header-logo {
     vertical-align: -10px;
     margin-right: 10px;
+  }
+  .username {
+    margin-left: 8px;
+    margin-right: 4px;
   }
 </style>

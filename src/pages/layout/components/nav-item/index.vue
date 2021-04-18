@@ -35,11 +35,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-::v-deep.el-menu-item [class^=icon-] {
-  margin-right: 5px;
-  width: 24px;
-  text-align: center;
-  font-size: 18px;
-  vertical-align: middle;
-}
+  ::v-deep.el-menu-item [class^=icon-] {
+    margin-right: 5px;
+    width: 24px;
+    text-align: center;
+    font-size: 18px;
+    vertical-align: middle;
+  }
 </style>

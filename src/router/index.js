@@ -10,7 +10,7 @@ Vue.use(vueRouter);
 
 // 创建实例
 const router = new vueRouter({
-  // 目前：开发环境使用history模式，生产环境使用hash模式
+  // 开发环境使用history模式，生产环境使用hash模式
   mode: process.env.VUE_APP_ROUTER_MODE,
   // 先挂载常用路由，需要权限的路由动态挂载
   routes: normalRoutes,
@@ -51,12 +51,14 @@ router.beforeEach(function(to, from, next) {
 router.afterEach((to) => {
   // 结束进度条
   Nprogress.done();
-
+  // 如果有标题则更新标题
   if (to.meta && to.meta.title) {
     // 更新title
-    document.title = `${to.meta.title} - ${process.env.VUE_APP_DESCRIPTION}`;
+    document.title =
+      i18n.t("router." + to.meta.title) + " - " + i18n.t("system.description");
   } else {
-    document.title = `${process.env.VUE_APP_NAME} - ${process.env.VUE_APP_DESCRIPTION}`;
+    document.title =
+      i18n.t("system.title") + " - " + i18n.t("system.description");
   }
 });
 

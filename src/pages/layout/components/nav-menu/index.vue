@@ -2,14 +2,14 @@
   <el-scrollbar id="navmenu">
     <!-- 如需路由正确工作，需添加router属性 -->
     <el-menu 
+      router
       :default-active="$route.path" 
       :collapse="collapsed"
-      background-color="#324554" 
-      text-color="#fff" 
-      active-text-color="#ffd04b" 
       :unique-opened="false"
       :collapse-transition="false"
-      router
+      text-color="rgba(255,255,255,.65)" 
+      active-text-color="#ffd04b" 
+      background-color="#324554" 
       class="aside" 
     >
       <!-- 多少层routes就多少层router-view -->
@@ -46,5 +46,11 @@ export default {
 <style lang="scss" scoped>
   .aside.el-menu {
     border-right: none;
+  }
+  ::v-deep .el-menu-item:not(.is-active):hover {
+    color: $--color-white!important;
+    i {
+      color: $--color-white!important;
+    }
   }
 </style>
