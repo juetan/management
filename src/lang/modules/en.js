@@ -110,4 +110,11 @@ export default {
     new: "New",
     stat: "Stat",
   },
+  lang: {
+    i18n: "Internationalization",
+    language: "Language",
+    languageTip: "only support chinese and english",
+    calendar: "Calendar",
+    calendarTip: "calendar component of element-ui",
+  },
 };

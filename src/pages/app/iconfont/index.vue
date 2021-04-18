@@ -1,7 +1,7 @@
 <template>
   <el-card class="tab" shadow="never">
     <div slot="header">
-      图标字体
+      图标合集
       <el-tooltip placement="top">
         <i class="el-icon-warning-outline"></i>
         <div slot="content">

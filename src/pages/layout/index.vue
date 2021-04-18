@@ -39,7 +39,7 @@ export default {
   computed: {
     collapsed() {
       return this.$store.state.default.collapsed
-    },
+    }
   },
   created() {
     

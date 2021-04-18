@@ -44,3 +44,6 @@ $--color-primary-active: mix($--color-black,$--color-primary,10%);
 
 // 功能色-成功色-背景色(+90%的白色)
 $--color-success-lighter: mix($--color-white, $--color-success, 90%);
+
+// 侧边栏背景色
+$--color-sidebar-background: '#324554';

@@ -112,4 +112,11 @@ export default {
     new: "最新",
     stat: "统计",
   },
+  lang: {
+    i18n: "语言国际",
+    language: "当前语言",
+    languageTip: "当前仅支持中英双语",
+    calendar: "日期日历",
+    calendarTip: "该组件为ElementUI的日历组件，这里展示其国际化的效果",
+  },
 };

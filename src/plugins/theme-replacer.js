@@ -15,6 +15,8 @@ const themeColors = {
     "#ff6666",
     // element-ui功能色-信息色
     "#959595",
+    // 侧边栏背景色
+    "#324554",
   ],
   blue: [
     // element-ui主题色
@@ -27,6 +29,8 @@ const themeColors = {
     "#F56C6C",
     // element-ui功能色-信息色
     "#909399",
+    // 侧边栏背景色
+    "#001529",
   ],
 };
 

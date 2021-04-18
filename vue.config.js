@@ -45,6 +45,8 @@ module.exports = {
           "#ff6666",
           // element-ui功能色-信息色
           "#959595",
+          // 侧边栏背景色
+          "#324554",
         ],
         fileName: "css/chunk-theme-[contenthash:8].css",
         changeSelector: forElementUI.changeSelector,

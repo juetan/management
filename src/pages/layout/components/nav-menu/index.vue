@@ -8,8 +8,8 @@
       :unique-opened="false"
       :collapse-transition="false"
       text-color="rgba(255,255,255,.65)" 
-      active-text-color="#ffd04b" 
-      background-color="#324554" 
+      :active-text-color="activeColor" 
+      :background-color="backgroundColor" 
       class="aside" 
     >
       <!-- 多少层routes就多少层router-view -->
@@ -32,6 +32,12 @@ export default {
   computed: {
     collapsed() {
       return this.$store.state.default.collapsed
+    },
+    backgroundColor() {
+      return this.$store.state.default.themeColors==='blue'?'#001529':'#324554'
+    },
+    activeColor() {
+      return this.$store.state.default.themeColors==='blue'?'#fff':'#ffd04b'
     }
   },
   created() {
