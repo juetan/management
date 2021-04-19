@@ -73,6 +73,9 @@ export default {
     iconfont: "字体图标",
     nested: "路由嵌套",
     external: "外部链接",
+    second: "二级嵌套",
+    thirdRoute: "三级路由",
+    secondRoute: "二级路由",
   },
   system: {
     title: "绝弹管理系统",

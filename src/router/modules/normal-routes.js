@@ -22,7 +22,7 @@ export default [
       {
         path: "/markdown",
         name: "markdown",
-        meta: { title: "markdown", icon: "el-icon-edit-outline" },
+        meta: { title: "markdown", icon: "el-icon-edit" },
         component: () =>
           import(/* webpackChunkName: "chunk-markdown" */ "@/pages/app/card"),
       },
@@ -43,7 +43,7 @@ export default [
       {
         path: "/iconfont",
         name: "iconfont",
-        meta: { title: "iconfont", icon: "icon-zh" },
+        meta: { title: "iconfont", icon: "el-icon-star-off" },
         component: () =>
           import(/* webpackChunkName: "chunk-router" */ "@/pages/app/iconfont"),
       },
@@ -51,7 +51,7 @@ export default [
         path: "/nested",
         name: "nested",
         redirect: "/nested1",
-        meta: { title: "nested", icon: "icon-zh" },
+        meta: { title: "nested", icon: "el-icon-connection" },
         component: () =>
           import(/* webpackChunkName: "chunk-router" */ "@/pages/app/nested"),
         children: [
@@ -59,7 +59,7 @@ export default [
             path: "/nested1",
             name: "nested1",
             redirect: "/nested1_1",
-            meta: { title: "iconfont", icon: "icon-zh" },
+            meta: { title: "second", icon: "el-icon-lollipop" },
             component: () =>
               import(
                 /* webpackChunkName: "chunk-router" */ "@/pages/app/nested/nested1.vue"
@@ -68,7 +68,7 @@ export default [
               {
                 path: "/nested1_1",
                 name: "nested1_1",
-                meta: { title: "iconfont", icon: "icon-zh" },
+                meta: { title: "thirdRoute", icon: "el-icon-ice-cream-square" },
                 component: () =>
                   import(
                     /* webpackChunkName: "chunk-router" */ "@/pages/app/nested/nested1-1.vue"
@@ -79,7 +79,7 @@ export default [
           {
             path: "/nested2",
             name: "nested2",
-            meta: { title: "iconfont", icon: "icon-zh" },
+            meta: { title: "secondRoute", icon: "el-icon-ice-cream-round" },
             component: () =>
               import(
                 /* webpackChunkName: "chunk-router" */ "@/pages/app/nested/nested2.vue"

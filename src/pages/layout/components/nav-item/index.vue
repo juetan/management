@@ -11,14 +11,14 @@
       </el-menu-item>
 
       <!-- 情况[2]: 外部链接 -->
-      <el-menu-item v-else-if="!route.children && !route.hidden && route.meta.link" :key="route.path" class="ment-item">
-        <a :href="route.path" class="external-link" target="_blank">
-          <!-- 路由图标 -->
-          <i :class="route.meta.icon"></i>
-          <!-- 路由标题 -->
-          <span slot="title">{{ $t('router.'+route.meta.title) }}</span>
-        </a>
-      </el-menu-item>
+      <a v-else-if="!route.children && !route.hidden && route.meta.link" :href="route.path" :key="route.path" target="_blank">
+        <el-menu-item  class="ment-item">
+            <!-- 路由图标 -->
+            <i :class="route.meta.icon"></i>
+            <!-- 路由标题 -->
+            <span slot="title">{{ $t('router.'+route.meta.title) }}</span>
+        </el-menu-item>
+      </a>
 
       <!-- 情况[3]: 嵌套路由 --> 
       <el-submenu v-else ref="subMenu" :key="route.path" :index="route.path" popper-append-to-body>
@@ -63,8 +63,5 @@ export default {
   // 隐藏小箭头
   .el-menu--collapse  .el-submenu__title .el-submenu__icon-arrow{
     display: none;
-  }
-  .external-link {
-    display: block;
   }
 </style>

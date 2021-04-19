@@ -70,6 +70,9 @@ export default {
     language: "i18n and l10n",
     iconfont: "Iconfont",
     external: "External Link",
+    second: "Second Nested",
+    thirdRoute: "Third Route",
+    secondRoute: "Second Route",
   },
   system: {
     title: "Juetan System",
