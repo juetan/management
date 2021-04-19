@@ -1,8 +1,5 @@
 <template>
-  <el-card class="language" shadow="never">
-    <div slot="header">
-      {{ $t('lang.i18n') }}
-    </div>
+  <layout-card :title="$t('lang.i18n')">
     <el-form label-width="100px" >
       <el-form-item >
         <div slot="label">
@@ -29,20 +26,24 @@
             </div>
           </el-tooltip>
         </div>
+        <!-- 日历组件 -->
         <el-calendar></el-calendar>
       </el-form-item>
     </el-form>
-  </el-card>
+  </layout-card>
 </template>
 
 <script>
+import layoutCard from '@/components/layout-card';
 export default {
   data() {
     return {
       language: 'zh'
     }
   },
-  
+  components: {
+    layoutCard
+  },
   watch: {
     language() {
       this.$i18n.locale = this.language

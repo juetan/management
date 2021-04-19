@@ -1,8 +1,5 @@
 <template>
-<el-card id="tableCard" shadow="never">
-  <div slot="header" class="clearfix">
-    <span>{{ $t('dataTable.dataList') }}</span>
-  </div>
+<layout-card :title="$t('dataTable.dataList')" id="tableCard" shadow="never">
   <div class="data-table">
     <!-- 全部选择 -->
     <el-button type="primary" size="small" @click="handleSelectAll" icon="el-icon-document-copy">{{ $t('dataTable.selectAll') }}</el-button>
@@ -81,10 +78,11 @@
     @current-change="handlePageChange"
     class="pagination-right"
   ></el-pagination>
-</el-card>
+</layout-card>
 </template>
 
 <script>
+import layoutCard from '@/components/layout-card';
 export default {
   name: "dataTable",
   data() {
@@ -244,6 +242,9 @@ export default {
     formatStatus(status) {
       return (status===1) ? '正常' : (status===2) ? '故障' : '停用'
     },
+  },
+  components: {
+    layoutCard
   }
 }
 </script>

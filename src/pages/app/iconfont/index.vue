@@ -1,30 +1,28 @@
 <template>
-  <el-card class="tab" shadow="never">
-    <div slot="header">
-      图标合集
+  <layout-card :help="$t('iconfont.help')">
+    <span slot="title">
+      <span>{{ $t('iconfont.title') }}</span>
       <el-tooltip placement="top">
         <i class="el-icon-warning-outline"></i>
         <div slot="content">
-          图标来自Iconfont,单击可复制
+          {{ $t('iconfont.tip') }}
         </div>
       </el-tooltip>
-      
-      <el-button type="text" style="float: right; padding: 3px 0">使用说明</el-button>
-    </div>
+    </span>
     <!-- iconfont图标 -->
     <icon-iconfont></icon-iconfont>
-    <!-- element-ui图标 -->
-    
-  </el-card>
+  </layout-card>
 </template>
 
 <script>
+import layoutCard from '@/components/layout-card';
 import iconIconfont from './components/icon-iconfont';
 // import iconElement  from './components/icon-elementui';
 export default {
   name: 'iconfont',
   components: {
     iconIconfont,
+    layoutCard
     // iconElement
   }
 }

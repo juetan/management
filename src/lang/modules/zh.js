@@ -119,4 +119,27 @@ export default {
     calendar: "日期日历",
     calendarTip: "该组件为ElementUI的日历组件，这里展示其国际化的效果",
   },
+  theme: {
+    currentTheme: "当前主题",
+    defaultTheme: "默认主题",
+    blueTheme: "蓝色主题",
+    ThemeStyle: "主题样式",
+    title: "主题换肤",
+    help: "帮助说明",
+    brandColor: "主题色彩",
+    successColor: "成功色彩",
+    infoColor: "信息色彩",
+    warningColor: "警告色彩",
+    dangerColor: "危险色彩",
+    defaultColor: "默认色彩",
+  },
+  iconfont: {
+    title: "图标合集",
+    tip: "图标来自iconfontimeupdate,单击可复制图标类名",
+    help: "帮助说明",
+  },
+  directives: {
+    noContent: "未复制任何内容",
+    copySuccessfully: "提示: 已复制图标类名!",
+  },
 };

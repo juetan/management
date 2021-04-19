@@ -47,32 +47,37 @@
             <!-- 首页链接 -->
             <el-dropdown-item>
               <router-link :to="{ path: '/' }">
-              <i class="icon-home"></i>
-              {{ $t('layout.home') }}</router-link>
+                <i class="icon-home"></i>
+                {{ $t('layout.home') }}
+              </router-link>
             </el-dropdown-item>
             <!-- Github仓库链接 -->
             <el-dropdown-item>
               <a href="https://github.com/juetan/management">
-              <i class="icon-github"></i>
-              {{ $t('layout.repository') }}</a>
+                <i class="icon-github"></i>
+                {{ $t('layout.repository') }}
+              </a>
             </el-dropdown-item>
             <!-- 开发文档链接 -->
             <el-dropdown-item>
               <a href="http://www.juetan.cn/tag/management">
-              <i class="el-icon-document"></i>
-              {{ $t('layout.devnote') }}</a>
+                <i class="el-icon-document"></i>
+                {{ $t('layout.devnote') }}
+              </a>
             </el-dropdown-item>
             <!-- 个人博客链接 -->
             <el-dropdown-item>
               <a href="https://www.juetan.cn">
-              <i class="el-icon-user"></i>
-              {{ $t('layout.myblog') }}</a>
+                <i class="el-icon-user"></i>
+                {{ $t('layout.myblog') }}
+              </a>
             </el-dropdown-item>
             <!-- 退出登录 -->
             <el-dropdown-item divided>
               <span class="logout" @click="handleLogout" >
                 <i class="icon-exit"></i>
-                {{ $t('layout.logout') }}</span>
+                {{ $t('layout.logout') }}
+              </span>
             </el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
@@ -84,39 +89,14 @@
 <script>
 import screenfull from 'screenfull'
 import driver from '@/plugins/driver'
+import driverSteps from './driver-steps';
 import { replaceThemeColors } from '@/plugins/theme-replacer';
 
 export default {
   name: "navtop",
   data() {
     return {
-      langague: 'zh',
-      steps: [
-        {
-          element: "#mcollapse",
-          popover: {
-            title: "折叠/展开",
-            description: "折叠或展开左侧导航菜单",
-            position: "bottom",
-          },
-        },
-        {
-          element: "#msetting",
-          popover: {
-            title: "系统设置",
-            description: "设置系统参数",
-            position: "bottom",
-          },
-        },
-        {
-          element: "#mfullscreen",
-          popover: {
-            title: "全屏显示",
-            description: "大屏展示",
-            position: "left",
-          },
-        },
-      ]
+      langague: this.$store.state.default.language,
     };
   },
   computed: {
@@ -145,13 +125,16 @@ export default {
     },
     // 引导指示
     handleDriver() {
-      driver.defineSteps(this.steps);
+      driver.defineSteps(driverSteps);
       driver.start();
     },
     // 切换主题
     handleSwitchTheme() {
+      // 因为不是select之类的下拉选择框,这里简单判断下值
       let theme = this.$store.state.default.themeColors ==='green' ? 'blue' : 'green';
+      // 更新主题色
       replaceThemeColors(theme).then(()=>{
+        // 弹窗提示
         this.$message({
           type: 'success',
           message: this.$t('layout.switchThemeInfo')
@@ -160,8 +143,11 @@ export default {
     },
     // 切换语言
     handleSwitchLangague() {
+      // 因为不是select之类的下拉选择框,这里简单判断下值
       this.$i18n.locale = this.$i18n.locale==='zh' ? 'en' : 'zh';
+      // 更新vuex状态
       this.$store.commit('default/set_language',this.$i18n.locale);
+      // 弹窗提示
       this.$message({
         type: 'success',
         message: this.$t('layout.switch')
@@ -169,11 +155,11 @@ export default {
     },
     // 退出登录
     handleLogout() {
-      // 弹窗确实退出操作
-      this.$confirm(this.$t('layout.logoutConfirm'), this.$t('layout.logout'), {
-        type: 'warning'
-      }).then(()=>{
+      // 弹窗确认退出操作
+      this.$confirm(this.$t('layout.logoutConfirm'), this.$t('layout.logout'), {type: 'warning'}).then(()=>{
+        // 退出用户(清除token等)
         this.$store.commit('user/logout_user');
+        // 跳转登录界面
         this.$router.push('/login')
       })
     }

@@ -1,23 +1,17 @@
 <template>
-  <div class="container">
-    <aside class="left-container">
-      <el-tree :data="data" :props="defaultProps" accordion>
-      </el-tree>
-    </aside>
-    <section class="post-container">
-      <el-form class="post-meta">
-        <el-form-item>
-          <el-input placeholder="文章标题" style="width: 720px"></el-input>
-          <el-cascader v-model="value" :options="data"></el-cascader>
-          <el-button type="primary" icon="el-icon-position" >发布</el-button>
-        </el-form-item>
-      </el-form>
-      <mavon-editor v-model="content" class="editor"></mavon-editor>
-    </section>
-  </div>
+  <layout-card title="编辑文章">
+    <el-form class="post-meta">
+      <el-form-item>
+        <el-input placeholder="文章标题" style="width: 720px"></el-input>
+        <el-button type="primary" icon="el-icon-position" >发布</el-button>
+      </el-form-item>
+    </el-form>
+    <mavon-editor v-model="content" class="editor" :boxShadow='false' :language="$i18n.locale"></mavon-editor>
+  </layout-card>
 </template>
 
 <script>
+import layoutCard from '@/components/layout-card';
 import { mavonEditor } from "mavon-editor";
 import "mavon-editor/dist/css/index.css";
 export default {
@@ -26,54 +20,11 @@ export default {
     return {
       content: '',
       value: [],
-      data: [{
-        value: 'frontend',
-        label: '前端开发',
-        children: [{
-          value: 'design-pattern',
-          label: '设计模式',
-          children: [{
-            value: 'factory',
-            label: '工厂模式'
-          }]
-        }]
-      }, {
-        value: 'backend',
-        label: '后端开发',
-        children: [{
-          value: 'java',
-          label: 'Java',
-          children: [{
-            value: 'spring',
-            label: 'Spring boot'
-          }]
-        }, {
-          value: 'php',
-          label: 'Php',
-          children: [{
-            value: 'laravel',
-            label: 'Laravel'
-          }]
-        }]
-      }, {
-        value: 'daily',
-        label: '日常随笔',
-        children: [{
-          value: 'life',
-          label: '生活日记',
-        }, {
-          value: 'feeling',
-          label: '日常感想',
-        }]
-      }],
-      defaultProps: {
-        children: 'children',
-        label: 'label'
-      }
     }
   },
   components: {
-    mavonEditor
+    mavonEditor,
+    layoutCard
   },
   methods: {
   }
@@ -125,7 +76,8 @@ export default {
   }
   .editor {
     flex-basis: auto;
-    height: calc(100% - 60px);
+    min-height: 700px;
     width: 100%;
+    border: 1px solid #EBEEF5;
   }
 </style>

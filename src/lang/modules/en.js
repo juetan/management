@@ -117,4 +117,27 @@ export default {
     calendar: "Calendar",
     calendarTip: "calendar component of element-ui",
   },
+  theme: {
+    currentTheme: "Current",
+    defaultTheme: "Default Theme",
+    blueTheme: "Blue Theme",
+    ThemeStyle: "Theme Style",
+    title: "Theme",
+    help: "help",
+    brandColor: "Brand Color",
+    successColor: "Success Color",
+    infoColor: "Info Color",
+    warningColor: "Warning Color",
+    dangerColor: "Danger Color",
+    defaultColor: "Default Color",
+  },
+  iconfont: {
+    title: "Icon Collection",
+    tip: "icons picked from iconfont.cn, click to copy the icon classname",
+    help: "help",
+  },
+  directives: {
+    noContent: "No content copyed",
+    copySuccessfully: "Notice: The classname of icon has been copyed",
+  },
 };
