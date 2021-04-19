@@ -47,6 +47,51 @@ export default [
         component: () =>
           import(/* webpackChunkName: "chunk-router" */ "@/pages/app/iconfont"),
       },
+      {
+        path: "/nested",
+        name: "nested",
+        redirect: "/nested1",
+        meta: { title: "nested", icon: "icon-zh" },
+        component: () =>
+          import(/* webpackChunkName: "chunk-router" */ "@/pages/app/nested"),
+        children: [
+          {
+            path: "/nested1",
+            name: "nested1",
+            redirect: "/nested1_1",
+            meta: { title: "iconfont", icon: "icon-zh" },
+            component: () =>
+              import(
+                /* webpackChunkName: "chunk-router" */ "@/pages/app/nested/nested1.vue"
+              ),
+            children: [
+              {
+                path: "/nested1_1",
+                name: "nested1_1",
+                meta: { title: "iconfont", icon: "icon-zh" },
+                component: () =>
+                  import(
+                    /* webpackChunkName: "chunk-router" */ "@/pages/app/nested/nested1-1.vue"
+                  ),
+              },
+            ],
+          },
+          {
+            path: "/nested2",
+            name: "nested2",
+            meta: { title: "iconfont", icon: "icon-zh" },
+            component: () =>
+              import(
+                /* webpackChunkName: "chunk-router" */ "@/pages/app/nested/nested2.vue"
+              ),
+          },
+        ],
+      },
+      {
+        path: "https://www.juetan.cn",
+        name: "juetan",
+        meta: { title: "external", icon: "el-icon-link", link: true },
+      },
     ],
   },
   {

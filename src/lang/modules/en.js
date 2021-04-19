@@ -69,6 +69,7 @@ export default {
     theme: "Theme",
     language: "i18n and l10n",
     iconfont: "Iconfont",
+    external: "External Link",
   },
   system: {
     title: "Juetan System",

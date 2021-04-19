@@ -1,13 +1,12 @@
 <template>
-  <layout-card>
+  <div class="nested1">
     <router-view></router-view>
-  </layout-card>
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'nested',
-  
+  name: 'nested1'
 }
 </script>
 

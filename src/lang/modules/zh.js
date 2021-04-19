@@ -71,6 +71,8 @@ export default {
     theme: "主题换肤",
     language: "语言国际",
     iconfont: "字体图标",
+    nested: "路由嵌套",
+    external: "外部链接",
   },
   system: {
     title: "绝弹管理系统",

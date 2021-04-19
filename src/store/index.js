@@ -12,6 +12,7 @@ const store = new Vuex.Store({
 });
 
 export default store;
+
 function autoload() {
   const moduleFiles = require.context("./modules", true, /\.js$/);
 
