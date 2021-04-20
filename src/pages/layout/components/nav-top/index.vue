@@ -32,15 +32,15 @@
         </el-tooltip>
         <!-- 切换语言 -->
         <el-tooltip class="header-item" effect="dark" :content="$t('layout.switchLanguage')" placement="bottom" :open-delay="500" >
-          <i :class="langIcon" @click="handleSwitchLangague" ></i>
+          <i :class="langIcon" @click="handleSwitchlanguage" ></i>
         </el-tooltip>
         <!-- 用户面板 -->
         <el-dropdown class="header-item" trigger="click">
           <div>
             <!-- 用户头像 -->
-            <el-avatar :src="require('./avatar.jpg')" size="small" style="vertical-align: middle"></el-avatar>
+            <el-avatar :src="avatar" size="small" style="vertical-align: middle"></el-avatar>
             <!-- 用户名称 -->
-            <span class="username">admin</span>
+            <span class="username">{{username}}</span>
             <i class="el-icon-caret-bottom"></i> 
           </div>
           <el-dropdown-menu slot="dropdown">
@@ -53,21 +53,21 @@
             </el-dropdown-item>
             <!-- Github仓库链接 -->
             <el-dropdown-item>
-              <a href="https://github.com/juetan/management">
+              <a href="https://github.com/juetan/management" target="_blank">
                 <i class="icon-github"></i>
                 {{ $t('layout.repository') }}
               </a>
             </el-dropdown-item>
             <!-- 开发文档链接 -->
             <el-dropdown-item>
-              <a href="http://www.juetan.cn/tag/management">
+              <a href="http://www.juetan.cn/tag/management" target="_blank">
                 <i class="el-icon-document"></i>
                 {{ $t('layout.devnote') }}
               </a>
             </el-dropdown-item>
             <!-- 个人博客链接 -->
             <el-dropdown-item>
-              <a href="https://www.juetan.cn">
+              <a href="https://www.juetan.cn" target="_blank">
                 <i class="el-icon-user"></i>
                 {{ $t('layout.myblog') }}
               </a>
@@ -91,21 +91,19 @@ import screenfull from 'screenfull'
 import driver from '@/plugins/driver'
 import driverSteps from './driver-steps';
 import { replaceThemeColors } from '@/plugins/theme-replacer';
+import { mapState } from 'vuex';
 
 export default {
   name: "navtop",
-  data() {
-    return {
-      langague: this.$store.state.default.language,
-    };
-  },
   computed: {
-    collapsed() {
-      return this.$store.state.default.collapsed
-    },
     langIcon() {
       return 'icon-'+this.$store.state.default.language
-    }
+    },
+    ...mapState({
+      collapsed: state=>state.default.collapsed,
+      username: state=>state.user.username,
+      avatar: state=>state.user.avatar,
+    })
   },
   methods: {
     // 右侧菜单栏折叠
@@ -142,7 +140,7 @@ export default {
       })
     },
     // 切换语言
-    handleSwitchLangague() {
+    handleSwitchlanguage() {
       // 因为不是select之类的下拉选择框,这里简单判断下值
       this.$i18n.locale = this.$i18n.locale==='zh' ? 'en' : 'zh';
       // 更新vuex状态

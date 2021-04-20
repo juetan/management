@@ -61,11 +61,10 @@ export default {
       this.$refs.form.validate(valid=>{
         if (valid) {
           // 网络请求数据
-          this.$api.user.login(this.formData).then(data=>{
-            // 更新本地token
-            this.$store.commit('user/set_token',data.token)
-            // 弹窗提示并跳转首页
+          this.$store.dispatch('user/login_user',this.formData).then((data)=>{
+            // 回调的this
             let self = this
+            // 弹窗提示并跳转首页
             this.$message({
               message: data.message,
               type: 'success',

@@ -1,12 +1,8 @@
 import request from "../request";
-import { user } from "../config";
 
 export default {
-  // 用户登录
-  auth(data) {
-    return request.post(user.auth, data);
-  },
-  login(data) {
+  // 登录用户
+  login_user(data) {
     return request.post("/login", data);
   },
   // 获取用户信息

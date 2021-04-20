@@ -10,7 +10,7 @@
 <script>
 import echarts from 'echarts'
 import { fanChartOptions } from '../echarts'
-const _ = require('lodash')
+const _merge = require('lodash/merge')
 export default {
   name: 'fanChart',
   data() {
@@ -56,7 +56,7 @@ export default {
   watch: {
     '$i18n.locale'() {
       // 更新扇形图参数(语言包部分)
-      const fanOptions = _.merge({},fanChartOptions,this.fanChartLang);
+      const fanOptions = _merge({},fanChartOptions,this.fanChartLang);
       this.fanChart.clear()
       this.fanChart.setOption(fanOptions,true);
     }

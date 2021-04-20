@@ -61,10 +61,10 @@ Mock.mock("/userinfo", "post", {
   code: 2000,
   message: "数据请求成功",
   data: {
-    username: "admin",
+    username: "绝弹",
     description: "鱼塘里的鱼",
-    avatar: "",
-    role: ["admin", "edit"],
+    avatar: "https://cdn.juetan.cn/usr/uploads/2021/03/2126941832.jpg",
+    role: ["admin", "editor"],
   },
 });
 

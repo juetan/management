@@ -14,7 +14,7 @@
 <script>
 import echarts from 'echarts'
 import { lineChartOptions } from '../echarts'
-const _ = require('lodash')
+const _merge = require('lodash/merge')
 
 export default {
   name: 'lineChart',
@@ -68,12 +68,13 @@ export default {
   watch: {
     '$i18n.locale'() {
       // 更新折线图参数(语言包部分)
-      const lineOptions = _.merge({},lineChartOptions,this.lineChartLang);
+      const lineOptions = _merge({},lineChartOptions,this.lineChartLang);
       this.lineChart.clear()
       this.lineChart.setOption(lineOptions,true);
     },
     '$store.state.default.collapsed'() {
       this.$nextTick(()=>{
+        console.log('collapsed');
         this.lineChart.resize();
       })
     }

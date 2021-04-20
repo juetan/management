@@ -27,6 +27,7 @@ router.beforeEach(function(to, from, next) {
   // 如果用户已登录则正常导航
   if (token) {
     if (to.path === "/login") {
+      // 弹窗提示已登录并返回首页
       message({
         message: i18n.t("router.loginedinfo"),
         type: "success",
@@ -36,9 +37,24 @@ router.beforeEach(function(to, from, next) {
         },
       });
     } else {
-      next();
+      const roled = store.state.user.role && store.state.user.role.length !== 0;
+      if (!roled) {
+        store
+          .dispatch("user/get_userinfo")
+          .then(() => {
+            next();
+          })
+          .catch(() => {
+            store.commit("user/remove_token");
+            Nprogress.done();
+            next("/login");
+          });
+      } else {
+        next();
+      }
     }
   } else {
+    // 这里需要分开判断，否则会死循环
     if (to.path === "/login") {
       next();
     } else {
