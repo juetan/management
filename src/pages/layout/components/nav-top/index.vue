@@ -158,9 +158,10 @@ export default {
       // 弹窗确认退出操作
       this.$confirm(this.$t('layout.logoutConfirm'), this.$t('layout.logout'), {type: 'warning'}).then(()=>{
         // 退出用户(清除token等)
-        this.$store.commit('user/logout_user');
-        // 跳转登录界面
-        this.$router.push('/login')
+        this.$store.dispatch('user/logout_user').then(()=>{
+          // 跳转登录界面
+          this.$router.push('/login')
+        });
       })
     }
   }

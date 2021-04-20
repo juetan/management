@@ -62,7 +62,7 @@ export default {
         if (valid) {
           // 网络请求数据
           this.$api.user.login(this.formData).then(data=>{
-            // 更新本地令牌
+            // 更新本地token
             this.$store.commit('user/set_token',data.token)
             // 弹窗提示并跳转首页
             let self = this

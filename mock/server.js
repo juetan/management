@@ -57,6 +57,17 @@ Mock.mock("/login", "post", (options) => {
   }
 });
 
+Mock.mock("/userinfo", "post", {
+  code: 2000,
+  message: "数据请求成功",
+  data: {
+    username: "admin",
+    description: "鱼塘里的鱼",
+    avatar: "",
+    role: ["admin", "edit"],
+  },
+});
+
 Mock.mock("/articles", "get", {
   code: 2000,
   message: "数据请求成功",

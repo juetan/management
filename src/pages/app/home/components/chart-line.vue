@@ -75,7 +75,6 @@ export default {
     '$store.state.default.collapsed'() {
       this.$nextTick(()=>{
         this.lineChart.resize();
-        this.fanChart.resize();
       })
     }
   }

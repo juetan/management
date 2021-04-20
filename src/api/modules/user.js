@@ -9,20 +9,8 @@ export default {
   login(data) {
     return request.post("/login", data);
   },
-  // 新增用户
-  create(data) {
-    return request.post(user.create, data);
-  },
-  // 删除用户
-  delete(data) {
-    return request.post(user.delete, data);
-  },
-  // 更新用户
-  update(data) {
-    return request.post(user.update, data);
-  },
-  // 获取用户
-  select(data) {
-    return request.get(user.select, data);
+  // 获取用户信息
+  get_userinfo() {
+    return request.post("/userinfo");
   },
 };
