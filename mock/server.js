@@ -64,7 +64,7 @@ Mock.mock("/userinfo", "post", {
     username: "绝弹",
     description: "鱼塘里的鱼",
     avatar: "https://cdn.juetan.cn/usr/uploads/2021/03/2126941832.jpg",
-    role: ["editor"],
+    role: ["admin"],
   },
 });
 

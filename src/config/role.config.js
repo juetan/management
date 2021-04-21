@@ -1,20 +1,20 @@
 export default {
   admin: {
-    publishPost: true,
     visitAdminPage: true,
     visitEditorPage: false,
     editorUsername: false,
+    publishPost: true,
     editPost: true,
-    addNewPost: true,
-    changeAuthor: true,
+    deletePost: true,
+    readPost: true,
   },
   editor: {
-    publishPost: false,
     visitAdminPage: false,
     visitEditorPage: true,
     editorUsername: true,
+    publishPost: false,
     editPost: true,
-    addNewPost: false,
-    changeAuthor: false,
+    deletePost: false,
+    readPost: true,
   },
 };

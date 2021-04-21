@@ -4,19 +4,19 @@ export default [
     name: "adminPage",
     meta: {
       title: "adminCapability",
-      icon: "el-icon-menu",
+      icon: "icon-cap",
       capability: "visitAdminPage",
     },
-    component: () => import("@/pages/app/capability/admin"),
+    component: () => import("@/pages/app/capability"),
   },
   {
     path: "/editor-page",
     name: "editorPage",
     meta: {
       title: "editorCapability",
-      icon: "el-icon-menu",
+      icon: "icon-cap",
       capability: "visitEditorPage",
     },
-    component: () => import("@/pages/app/capability/editor"),
+    component: () => import("@/pages/app/capability"),
   },
 ];

@@ -3,7 +3,7 @@
     <el-form label-width="100px" >
       <el-form-item >
         <div slot="label">
-          <span>{{ $t('lang.language') }}</span>
+          <span>{{ $t('lang.language') }}</span> 
           <el-tooltip placement="top">
             <i class="el-icon-warning-outline"></i> 
             <div slot="content">
@@ -18,7 +18,7 @@
       </el-form-item>
       <el-form-item>
         <div slot="label">
-          <span>{{ $t('lang.calendar') }}</span>
+          <span>{{ $t('lang.calendar') }}</span> 
           <el-tooltip placement="top">
             <i class="el-icon-warning-outline"></i> 
             <div slot="content">

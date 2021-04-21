@@ -96,7 +96,7 @@ export default {
       // 每页显示数量
       pageSizes: [10,15,20,30],
       // 每页显示数量
-      pageSize: 10,
+      pageSize: 15,
       // 当前页
       currentPage: 1,
       // 数据总量
@@ -183,7 +183,7 @@ export default {
       // 重置当前页码
       this.currentPage = 1
       // 重置当前分页数量
-      this.pageSize = 10
+      this.pageSize = 15
       // 更新表格数据
       this._updateTableData()
     },

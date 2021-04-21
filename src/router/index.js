@@ -9,6 +9,9 @@ import hasCapability from "@/helper/hasCapability";
 
 Vue.use(vueRouter);
 
+// 路由白名单
+const whiteList = ["/login", "/404"];
+
 // 创建实例
 const router = new vueRouter({
   // 开发环境使用history模式，生产环境使用hash模式
@@ -42,12 +45,14 @@ router.beforeEach(function(to, from, next) {
       // 检查是否已获取用户角色等信息
       const roled = store.state.user.role && store.state.user.role.length !== 0;
       if (!roled) {
+        // 获取用户信息并跳转路由
         store
           .dispatch("user/get_userinfo")
           .then(() => {
             next();
           })
           .catch(() => {
+            // 获取失败的话返回登录页
             store.commit("user/remove_token");
             Nprogress.done();
             next("/login");
@@ -55,10 +60,8 @@ router.beforeEach(function(to, from, next) {
       } else {
         // 判断是否有访问该页面的权限
         if (hasCapability(to.meta.capability)) {
-          console.log("ok");
           next();
         } else {
-          console.log("bad");
           message({
             type: "error",
             message: i18n.t("router.hasNoCapability"),
@@ -71,8 +74,8 @@ router.beforeEach(function(to, from, next) {
       }
     }
   } else {
-    // 这里需要分开判断，否则会死循环
-    if (to.path === "/login") {
+    // 这里需要分开判断，否则会死循环(暂时不加白名单)
+    if (whiteList.includes(to.path)) {
       next();
     } else {
       next({ path: "/login" });
