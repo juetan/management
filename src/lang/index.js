@@ -23,7 +23,7 @@ const messages = {
 };
 // 创建实例
 const lang = new VueI18n({
-  locale: "zh",
+  locale: localStorage.getItem("language") || "zh",
   // locale: store.state.default.language,
   messages,
 });

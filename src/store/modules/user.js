@@ -10,7 +10,7 @@ const state = {
   // 用户头像
   avatar: "",
   // 用户角色
-  role: [],
+  role: JSON.parse(sessionStorage.getItem("role")),
 };
 
 const mutations = {
@@ -38,7 +38,13 @@ const mutations = {
   },
   // 设置用户角色
   set_role(state, role) {
+    console.log(JSON.stringify(role));
+    sessionStorage.setItem("role", JSON.stringify(role));
     state.role = role;
+  },
+  remove_role(state) {
+    sessionStorage.removeItem("role");
+    state.role = [];
   },
 };
 
@@ -56,7 +62,7 @@ const actions = {
     context.commit("set_username", "");
     context.commit("set_description", "");
     context.commit("set_avatar", "");
-    context.commit("set_role", []);
+    context.commit("remove_role");
     return Promise.resolve();
   },
   // 获取用户信息

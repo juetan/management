@@ -73,6 +73,10 @@ export default {
     second: "Second Nested",
     thirdRoute: "Third Route",
     secondRoute: "Second Route",
+    adminCapability: "Admin Page",
+    editorCapability: "Editor Page",
+    hasNoCapability:
+      "You don't have capability to visit the page, it will back to home page in 2s",
   },
   system: {
     title: "Juetan System",

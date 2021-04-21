@@ -1,12 +1,22 @@
 export default [
   {
-    path: "/home",
-    name: "home",
+    path: "/admin-page",
+    name: "adminPage",
     meta: {
-      title: "系统首页",
+      title: "adminCapability",
       icon: "el-icon-menu",
-      role: ["admin", "editor"],
+      capability: "visitAdminPage",
     },
-    component: () => import("@/views/application/equiment"),
+    component: () => import("@/pages/app/capability/admin"),
+  },
+  {
+    path: "/editor-page",
+    name: "editorPage",
+    meta: {
+      title: "editorCapability",
+      icon: "el-icon-menu",
+      capability: "visitEditorPage",
+    },
+    component: () => import("@/pages/app/capability/editor"),
   },
 ];

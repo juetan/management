@@ -1,3 +1,4 @@
+import authedRoutes from "./authed-routes";
 export default [
   {
     path: "/",
@@ -47,6 +48,7 @@ export default [
         component: () =>
           import(/* webpackChunkName: "chunk-router" */ "@/pages/app/iconfont"),
       },
+      ...authedRoutes,
       {
         path: "/nested",
         name: "nested",

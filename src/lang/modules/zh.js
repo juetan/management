@@ -76,6 +76,9 @@ export default {
     second: "二级嵌套",
     thirdRoute: "三级路由",
     secondRoute: "二级路由",
+    adminCapability: "管理权限",
+    editorCapability: "普通权限",
+    hasNoCapability: "您没有权限访问该页面，2秒后返回首页!",
   },
   system: {
     title: "绝弹管理系统",

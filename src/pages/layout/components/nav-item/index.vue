@@ -3,7 +3,7 @@
     <!-- 因为用的是template，所以key放在里面 -->
     <template v-for="route in data">
       <!-- 情况[1]：单个路由 -->
-      <el-menu-item v-if="!route.children && !route.hidden && !route.meta.link" :key="route.path" :index="route.path" class="ment-item">
+      <el-menu-item v-if="!route.children && !route.hidden && !route.meta.link && isCapabilited(route.meta.capability)" :key="route.path" :index="route.path" class="ment-item">
         <!-- 路由图标 -->
         <i :class="route.meta.icon"></i>
         <!-- 路由标题 -->
@@ -21,7 +21,7 @@
       </a>
 
       <!-- 情况[3]: 嵌套路由 --> 
-      <el-submenu v-else ref="subMenu" :key="route.path" :index="route.path" popper-append-to-body>
+      <el-submenu v-else-if="route.children" ref="subMenu" :key="route.path" :index="route.path" popper-append-to-body>
         <template slot="title">
           <!-- 路由图标 -->
           <i :class="route.meta.icon"></i>
@@ -35,6 +35,8 @@
 </template>
 
 <script>
+import hasCapability from '@/helper/hasCapability';
+
 export default {
   name: "navItem",
   props:{
@@ -43,6 +45,12 @@ export default {
       required: true
     }
   },
+  methods: {
+    // 判断当前路由是否需要权限，无权限则不显示在菜单上
+    isCapabilited(capability) {
+      return hasCapability(capability)
+    }
+  }
 }
 </script>
 

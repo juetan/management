@@ -5,6 +5,7 @@ import Nprogress from "@/plugins/nprogress";
 import store from "@/store";
 import { message } from "@/plugins/element-ui";
 import i18n from "@/lang";
+import hasCapability from "@/helper/hasCapability";
 
 Vue.use(vueRouter);
 
@@ -24,8 +25,9 @@ router.beforeEach(function(to, from, next) {
   // 从本地获取登录令牌(token)
   let token = store.state.user.token;
 
-  // 如果用户已登录则正常导航
+  // 用户已登录
   if (token) {
+    // 如果访问的是login，重定向回首页
     if (to.path === "/login") {
       // 弹窗提示已登录并返回首页
       message({
@@ -37,6 +39,7 @@ router.beforeEach(function(to, from, next) {
         },
       });
     } else {
+      // 检查是否已获取用户角色等信息
       const roled = store.state.user.role && store.state.user.role.length !== 0;
       if (!roled) {
         store
@@ -50,7 +53,21 @@ router.beforeEach(function(to, from, next) {
             next("/login");
           });
       } else {
-        next();
+        // 判断是否有访问该页面的权限
+        if (hasCapability(to.meta.capability)) {
+          console.log("ok");
+          next();
+        } else {
+          console.log("bad");
+          message({
+            type: "error",
+            message: i18n.t("router.hasNoCapability"),
+            duration: 2000,
+            onClose() {
+              next("/");
+            },
+          });
+        }
       }
     }
   } else {
