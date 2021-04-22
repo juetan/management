@@ -14,7 +14,7 @@ export default [
     name: "editorPage",
     meta: {
       title: "editorCapability",
-      icon: "icon-cap",
+      icon: "el-icon-lock",
       capability: "visitEditorPage",
     },
     component: () => import("@/pages/app/capability"),

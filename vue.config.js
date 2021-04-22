@@ -2,6 +2,7 @@
 // import mocker from "/mock/server";
 const webpackThemeColorRplacer = require("webpack-theme-color-replacer");
 const forElementUI = require("webpack-theme-color-replacer/forElementUI");
+const themeColors = require("./src/config/theme-colors");
 
 module.exports = {
   // 公共路径，因为要部署到GitHub pages上，所以将生产环境的值改成仓库名称
@@ -34,20 +35,7 @@ module.exports = {
     // 主题功能步骤1
     config.plugin("webpackThemeColorRplacer").use(webpackThemeColorRplacer, [
       {
-        matchColors: [
-          // element-ui主题色
-          ...forElementUI.getElementUISeries("#10c599"),
-          // element-ui功能色-成功色
-          "#33cc99",
-          // element-ui功能色-警报色
-          "#ff9900",
-          // element-ui功能色-危险色
-          "#ff6666",
-          // element-ui功能色-信息色
-          "#959595",
-          // 侧边栏背景色
-          "#324554",
-        ],
+        matchColors: themeColors.green,
         fileName: "css/chunk-theme-[contenthash:8].css",
         changeSelector: forElementUI.changeSelector,
         injectCss: false,

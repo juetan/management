@@ -1,6 +1,7 @@
 import Vue from "vue";
 import request from "./request";
 
+// 此处好像不能单独提取出一个函数，会提示错误
 const moduleFiles = require.context("./modules", true, /\.js$/);
 
 // moduleFiles既是函数也是对象，此处作对象调用

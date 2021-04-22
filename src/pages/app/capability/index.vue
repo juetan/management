@@ -19,12 +19,12 @@
           <el-tooltip placement="top">
             <i class="el-icon-warning-outline"></i>
             <div slot="content">
-              拥有visitAdminPage权限可访问/admin-page页面，<br>
-              拥有visitEditorPage权限可访问/editor-page页面.
+              拥有visit_admin_page权限可访问/admin-page页面，<br>
+              拥有visit_editor_page权限可访问/editor-page页面.
             </div>
           </el-tooltip>
         </div>
-        拥有 visitAdminPage 权限的用户才能访问到该页面
+        拥有 visit_admin_page 权限的用户才能访问到该页面
       </el-form-item>
       <el-form-item>
         <div slot="label">

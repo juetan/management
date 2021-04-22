@@ -35,30 +35,32 @@
 </template>
 
 <script>
-  // import { mapState } from 'vuex';
-  import layoutCard from '@/components/layout-card';
-  // import { replaceThemeColors } from '@/plugins/theme-replacer';
-  export default {
-    data() {
-      return {
-        theme: this.$store.state.default.themeColors
-      }
-    },
-    components: {
-      layoutCard
-    },
-    watch: {
-      theme() {
-        // replaceThemeColors(this.theme)
-        this.$store.dispatch('default/set_theme',this.theme).then(()=>{
-          this.$message({
-            type: "success",
-            message: this.$t("layout.switchThemeInfo"),
-          });
-        })
+import layoutCard from '@/components/layout-card';
+export default {
+  computed: {
+    theme: {
+      get() {
+        return this.$store.state.default.themeColors
+      },
+      set(value) {
+        this.$store.state.default.themeColors = value
       }
     }
+  },
+  components: {
+    layoutCard
+  },
+  watch: {
+    theme() {
+      this.$store.dispatch('default/set_theme',this.theme).then(()=>{
+        this.$message({
+          type: "success",
+          message: this.$t("layout.switchThemeInfo"),
+        });
+      })
+    }
   }
+}
 </script>
 
 <style lang="scss" scoped>
