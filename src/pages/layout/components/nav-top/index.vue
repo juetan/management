@@ -90,7 +90,6 @@
 import screenfull from 'screenfull'
 import driver from '@/plugins/driver'
 import driverSteps from './driver-steps';
-import { replaceThemeColors } from '@/plugins/theme-replacer';
 import { mapState } from 'vuex';
 
 export default {
@@ -129,27 +128,26 @@ export default {
     // 切换主题
     handleSwitchTheme() {
       // 因为不是select之类的下拉选择框,这里简单判断下值
-      let theme = this.$store.state.default.themeColors ==='green' ? 'blue' : 'green';
+      let theme = this.$store.state.default.theme ==='default' ? 'skyblue' : 'default';
       // 更新主题色
-      replaceThemeColors(theme).then(()=>{
-        // 弹窗提示
+      this.$store.dispatch('default/switch_theme',theme).then(()=>{
         this.$message({
-          type: 'success',
-          message: this.$t('layout.switchThemeInfo')
-        })
+          type: "success",
+          message: this.$t("layout.switchThemeInfo"),
+        });
       })
     },
     // 切换语言
     handleSwitchlanguage() {
       // 因为不是select之类的下拉选择框,这里简单判断下值
-      this.$i18n.locale = this.$i18n.locale==='zh' ? 'en' : 'zh';
+      let language = this.$i18n.locale==='zh' ? 'en' : 'zh';
       // 更新vuex状态
-      this.$store.commit('default/set_language',this.$i18n.locale);
-      // 弹窗提示
-      this.$message({
-        type: 'success',
-        message: this.$t('layout.switch')
-      })
+      this.$store.dispatch('default/switch_language',language).then(()=>{
+          this.$message({
+            type: 'success',
+            message: this.$t('layout.switch')
+          })
+        })
     },
     // 退出登录
     handleLogout() {

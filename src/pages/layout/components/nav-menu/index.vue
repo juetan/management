@@ -9,7 +9,7 @@
       :collapse-transition="false"
       text-color="rgba(255,255,255,.65)" 
       :active-text-color="activeColor" 
-      :background-color="backgroundColor" 
+      :background-color="backgroundColor"
       class="aside" 
     >
       <!-- 多少层routes就多少层router-view -->
@@ -34,10 +34,10 @@ export default {
       return this.$store.state.default.collapsed
     },
     backgroundColor() {
-      return this.$store.state.default.themeColors==='blue'?'#001529':'#324554'
+      return this.$store.state.default.theme==='skyblue'?'#001529':'#324554'
     },
     activeColor() {
-      return this.$store.state.default.themeColors==='blue'?'#fff':'#ffd04b'
+      return this.$store.state.default.theme==='skyblue'?'#fff':'#ffd04b'
     }
   },
   created() {
@@ -52,7 +52,19 @@ export default {
 <style lang="scss" scoped>
   .aside.el-menu {
     border-right: none;
+    // background: $--color-sidebar-background;
   }
+  // ::v-deep .el-menu-item, ::v-deep .el-submenu__title {
+  //   background-color: $--color-sidebar-background;
+  //   color: $--color-sidebar-text;
+  //   &:hover {
+  //     background-color: $--color-sidebar-background-hover;
+  //     color: #fff;
+  //   }
+  //   &.is-active {
+  //     color: $--color-sidebar-text-active;
+  //   }
+  // }
   ::v-deep .el-menu-item:not(.is-active):hover {
     color: $--color-white!important;
     i {

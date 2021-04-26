@@ -11,7 +11,7 @@
             </div>
           </el-tooltip>
         </div>
-        <el-radio-group v-model="$i18n.locale" size="small">
+        <el-radio-group v-model="language" size="small">
           <el-radio label="zh" border>简体中文</el-radio>
           <el-radio label="en" border>English</el-radio>
         </el-radio-group>
@@ -36,19 +36,24 @@
 <script>
 import layoutCard from '@/components/layout-card';
 export default {
-  data() {
-    return {
-      language: 'zh'
+  computed: {
+    language: {
+      get() {
+        return this.$i18n.locale;
+      },
+      set(value) {
+        this.$store.dispatch('default/switch_language',value).then(()=>{
+          this.$message({
+            type: 'success',
+            message: this.$t('layout.switch')
+          })
+        })
+      }
     }
   },
   components: {
     layoutCard
   },
-  watch: {
-    language() {
-      this.$i18n.locale = this.language
-    }
-  }
 }
 </script>
 

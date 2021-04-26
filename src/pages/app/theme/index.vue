@@ -5,9 +5,9 @@
       <el-form-item :label="$t('theme.currentTheme')">
         <el-radio-group size="small" v-model="theme">
           <!-- 默认主题 -->
-          <el-radio label="green" border>{{ $t('theme.defaultTheme') }}</el-radio>
+          <el-radio label="default" border>{{ $t('theme.defaultTheme') }}</el-radio>
           <!-- 蓝色主题 -->
-          <el-radio label="blue" border>{{ $t('theme.blueTheme') }}</el-radio>
+          <el-radio label="skyblue" border>{{ $t('theme.blueTheme') }}</el-radio>
         </el-radio-group>
       </el-form-item>
       <!-- 主题样式 -->
@@ -40,26 +40,21 @@ export default {
   computed: {
     theme: {
       get() {
-        return this.$store.state.default.themeColors
+        return this.$store.state.default.theme
       },
       set(value) {
-        this.$store.state.default.themeColors = value
+        this.$store.dispatch('default/switch_theme',value).then(()=>{
+          this.$message({
+            type: "success",
+            message: this.$t("layout.switchThemeInfo"),
+          });
+        })
       }
     }
   },
   components: {
     layoutCard
   },
-  watch: {
-    theme() {
-      this.$store.dispatch('default/set_theme',this.theme).then(()=>{
-        this.$message({
-          type: "success",
-          message: this.$t("layout.switchThemeInfo"),
-        });
-      })
-    }
-  }
 }
 </script>
 

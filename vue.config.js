@@ -34,7 +34,7 @@ module.exports = {
     // 主题功能步骤1
     config.plugin("webpackThemeColorRplacer").use(webpackThemeColorRplacer, [
       {
-        matchColors: themeColors.green,
+        matchColors: themeColors["default"],
         fileName: "css/chunk-theme-[contenthash:8].css",
         changeSelector: forElementUI.changeSelector,
         injectCss: false,
