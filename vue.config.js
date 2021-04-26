@@ -43,14 +43,14 @@ module.exports = {
     ]);
 
     // 代码分析
-    config
-      .plugin("BundleAnalyzerPlugin")
-      .use(require("webpack-bundle-analyzer").BundleAnalyzerPlugin, [
-        {
-          //  在默认浏览器中自动打开
-          openAnalyzer: process.env.NODE_ENV === "development" ? false : true,
-        },
-      ]);
+    // config
+    //   .plugin("BundleAnalyzerPlugin")
+    //   .use(require("webpack-bundle-analyzer").BundleAnalyzerPlugin, [
+    //     {
+    //       //  在默认浏览器中自动打开
+    //       openAnalyzer: process.env.NODE_ENV === "development" ? false : true,
+    //     },
+    //   ]);
 
     // 生产环境下的webpack配置
     if (process.env.NODE_ENV === "production") {
