@@ -1,5 +1,4 @@
 // const ComporessionPlugin = require("compression-webpack-plugin");
-// import mocker from "/mock/server";
 const webpackThemeColorRplacer = require("webpack-theme-color-replacer");
 const forElementUI = require("webpack-theme-color-replacer/forElementUI");
 const themeColors = require("./src/config/theme-colors");
@@ -9,7 +8,7 @@ module.exports = {
   publicPath: process.env.NODE_ENV === "production" ? "/management/" : "/",
 
   // 减少生产环境下的文件体积
-  productionSourceMap: false,
+  productionSourceMap: true,
 
   // 对象配置webpack：该对象会与webpack的配置对象合并
   configureWebpack: {
@@ -43,17 +42,15 @@ module.exports = {
       },
     ]);
 
-    // 开发环境下的配置
-    if (process.env.NODE_ENV === "development") {
-      config
-        .plugin("BundleAnalyzerPlugin")
-        .use(require("webpack-bundle-analyzer").BundleAnalyzerPlugin, [
-          {
-            //  在默认浏览器中自动打开报告
-            openAnalyzer: false,
-          },
-        ]);
-    }
+    // 代码分析
+    config
+      .plugin("BundleAnalyzerPlugin")
+      .use(require("webpack-bundle-analyzer").BundleAnalyzerPlugin, [
+        {
+          //  在默认浏览器中自动打开
+          openAnalyzer: process.env.NODE_ENV === "development" ? false : true,
+        },
+      ]);
 
     // 生产环境下的webpack配置
     if (process.env.NODE_ENV === "production") {

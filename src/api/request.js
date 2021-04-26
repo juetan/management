@@ -8,7 +8,7 @@ import { message } from "@/plugins/element-ui";
 // 创建axio例
 const request = axios.create({
   // 基本URL(纯MOCKJS情况下无效)
-  baseURL: process.env.VUE_APP_API_BASE_URL,
+  // baseURL: process.env.VUE_APP_API_BASE_URL,
   // 请求超时时间
   timeout: 3000,
 });

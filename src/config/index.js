@@ -13,16 +13,15 @@ export const app = {
 
 export const theme = {
   default: {
-    'color-primary': '#10c599',
-    'color-success': '#3c9',
-    'color-warning': 'f90',
-    'color-danger': '#f66',
-    'color-info': '#959595'
+    "color-primary": "#10c599",
+    "color-success": "#3c9",
+    "color-warning": "f90",
+    "color-danger": "#f66",
+    "color-info": "#959595",
   },
-  skylight: {
-
-  }
-}
+  skylight: {},
+};
+// forElement生成的主题色色板
 // const el = {
 //   0: "#409eff", // 无用
 //   1: "64,158,255", // 无用
@@ -37,11 +36,31 @@ export const theme = {
 //   10: "#d9ecff",//8级
 //   11: "#ecf5ff",//9级
 //   12: "#f5faff", // 未用到 +5%白色
-//   13: "#3a8ee6", // +10%黑色 点击色
+//   13: "#3a8ee6", // 点击色：+10%黑色
 //   14: "#337ecc", // 未用到 +20%黑色
 //   15: "210,100.000%,62.549%", // 未用到 hsl
-//   16: "#67C23A", //功能色-绿色
-//   17: "#E6A23C",
-//   18: "#F56C6C",
-//   19: "#909399",
 // }
+// 按钮
+// 文字：color
+// 边框：+60%白色
+// 背景：+90%白色
+// 悬浮：+20%白色
+// 点击：+10%黑色
+
+// 功能色-警告色
+// 0: "#E6A23C"
+// 1: "230,162,60"
+// 2: "#e6a23c"
+// 3: "#e9ab50"
+// 4: "#ebb563" 用到：el-tag
+// 5: "#eebe77"
+// 6: "#f0c78a" hover
+// 7: "#f3d19e" el-link-disabled
+// 8: "#f5dab1" get
+// 9: "#f8e3c5"
+// 10: "#faecd8"
+// 11: "#fdf6ec"
+// 12: "#fefaf5"
+// 13: "#cf9236"
+// 14: "#b88230"
+// 15: "36,77.273%,56.863%"

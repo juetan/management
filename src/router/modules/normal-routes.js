@@ -18,7 +18,8 @@ export default [
         path: "/table",
         name: "table",
         meta: { title: "datatable", icon: "icon-equi" },
-        component: () => import("@/pages/app/table"),
+        component: () =>
+          import(/* webpackChunkName: "chunk-table" */ "@/pages/app/table"),
       },
       {
         path: "/markdown",

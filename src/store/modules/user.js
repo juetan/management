@@ -52,6 +52,7 @@ const actions = {
   // 登录用户
   login_user(context, userData) {
     return userApi.login_user(userData).then((data) => {
+      console.log(data);
       context.commit("set_token", data.token);
       return data;
     });
