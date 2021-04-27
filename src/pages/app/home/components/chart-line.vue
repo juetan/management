@@ -14,13 +14,15 @@
 <script>
 import echarts from 'echarts'
 import { lineChartOptions } from '../echarts'
+import resize from './resize';
 const _merge = require('lodash/merge')
 
 export default {
   name: 'lineChart',
+  mixins: [resize],
   data() {
     return {
-      lineChart: null,
+      echart: null,
     }
   },
   computed: {
@@ -61,21 +63,21 @@ export default {
   methods: {
     _initEchart() {
       // 折线图初始化
-      this.lineChart = echarts.init(this.$refs.chartLine)
-      this.lineChart.setOption(lineChartOptions)
+      this.echart = echarts.init(this.$refs.chartLine)
+      this.echart.setOption(lineChartOptions)
     }
   },
   watch: {
     '$i18n.locale'() {
       // 更新折线图参数(语言包部分)
       const lineOptions = _merge({},lineChartOptions,this.lineChartLang);
-      this.lineChart.clear()
-      this.lineChart.setOption(lineOptions,true);
+      this.echart.clear()
+      this.echart.setOption(lineOptions,true);
     },
     '$store.state.default.collapsed'() {
       this.$nextTick(()=>{
         console.log('collapsed');
-        this.lineChart.resize();
+        this.echart.resize();
       })
     }
   }

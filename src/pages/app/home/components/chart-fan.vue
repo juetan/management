@@ -11,11 +11,14 @@
 import echarts from 'echarts'
 import { fanChartOptions } from '../echarts'
 const _merge = require('lodash/merge')
+import resize from './resize';
+
 export default {
   name: 'fanChart',
+  mixins: [resize],
   data() {
     return {
-      fanChart: null,
+      echart: null,
     }
   },
   computed: {
@@ -49,16 +52,16 @@ export default {
   methods: {
     _initEchart() {
       // 扇形图初始化
-      this.fanChart = echarts.init(this.$refs.chartFan)
-      this.fanChart.setOption(fanChartOptions)
+      this.echart = echarts.init(this.$refs.chartFan)
+      this.echart.setOption(fanChartOptions)
     }
   },
   watch: {
     '$i18n.locale'() {
       // 更新扇形图参数(语言包部分)
       const fanOptions = _merge({},fanChartOptions,this.fanChartLang);
-      this.fanChart.clear()
-      this.fanChart.setOption(fanOptions,true);
+      this.echart.clear()
+      this.echart.setOption(fanOptions,true);
     }
   }
 }

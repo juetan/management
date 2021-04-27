@@ -3,7 +3,7 @@
     <el-form class="post-meta">
       <el-form-item>
         <el-input placeholder="文章标题" style="width: 720px"></el-input>
-        <el-button type="primary" icon="el-icon-position" >发布</el-button>
+        <el-button type="primary" icon="el-icon-position" class="publish">发布</el-button>
       </el-form-item>
     </el-form>
     <mavon-editor v-model="content" class="editor" :boxShadow='false' :language="$i18n.locale"></mavon-editor>
@@ -79,5 +79,8 @@ export default {
     min-height: 700px;
     width: 100%;
     border: 1px solid #EBEEF5;
+  }
+  .publish {
+    margin-left: 16px;
   }
 </style>

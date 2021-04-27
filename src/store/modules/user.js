@@ -2,43 +2,56 @@ import userApi from "@/api/modules/user";
 
 const state = {
   // 用户令牌
-  token: localStorage.getItem("access_token"),
+  token: localStorage.getItem("token"),
   // 用户名
-  username: "",
+  username: sessionStorage.getItem("username"),
   // 用户简介
-  description: "",
+  description: sessionStorage.getItem("description"),
   // 用户头像
-  avatar: "",
+  avatar: sessionStorage.getItem("avatar"),
   // 用户角色
   role: JSON.parse(sessionStorage.getItem("role")),
 };
 
 const mutations = {
-  // 设置token
+  // token
   set_token(state, token) {
-    localStorage.setItem("access_token", token);
+    localStorage.setItem("token", token);
     state.token = token;
   },
-  // 移除token
   remove_token(state) {
+    localStorage.removeItem("token");
     state.token = "";
-    localStorage.removeItem("access_token");
   },
-  // 设置用户名
+  // 用户名
   set_username(state, name) {
+    sessionStorage.setItem("username", name);
     state.username = name;
   },
-  // 设置用户简介
+  remove_username(state) {
+    localStorage.removeItem("username");
+    state.username = "";
+  },
+  // 用户简介
   set_description(state, description) {
+    sessionStorage.setItem("description", description);
     state.description = description;
   },
-  // 设置用户头像
+  remove_description(state) {
+    localStorage.removeItem("description");
+    state.description = "";
+  },
+  // 用户头像
   set_avatar(state, avatar) {
+    sessionStorage.setItem("avatar", avatar);
     state.avatar = avatar;
   },
-  // 设置用户角色
+  remove_avatar(state) {
+    localStorage.removeItem("avatar");
+    state.avatar = "";
+  },
+  // 用户角色
   set_role(state, role) {
-    console.log(JSON.stringify(role));
     sessionStorage.setItem("role", JSON.stringify(role));
     state.role = role;
   },
@@ -60,9 +73,9 @@ const actions = {
   // 退出用户
   logout_user(context) {
     context.commit("remove_token");
-    context.commit("set_username", "");
-    context.commit("set_description", "");
-    context.commit("set_avatar", "");
+    context.commit("remove_username");
+    context.commit("remove_description");
+    context.commit("remove_avatar");
     context.commit("remove_role");
     return Promise.resolve();
   },

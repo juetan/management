@@ -142,6 +142,7 @@ export default {
     },
     // 表格操作[2]: 表格选择框发生变化时的处理
     handleSelectionChange(selection) {
+      console.log(selection);
       this.selectedData = selection
     },
     // 表格操作[3]：删除选中数据
@@ -151,7 +152,7 @@ export default {
         // 遍历要删除的数据项
         this.selectedData.forEach((item)=> {
           // 从现有表格数据中删去这些数据项
-          this.tableData.forEach((itemI, indexI)=> {
+          this.filteredData.forEach((itemI, indexI)=> {
             if (item === itemI) {
               this.filteredData.splice(indexI, 1);
             }

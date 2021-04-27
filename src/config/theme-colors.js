@@ -33,6 +33,6 @@ module.exports = {
   ],
 };
 
-const xx = forElementUI.getElementUISeries("#324554");
+// const xx = forElementUI.getElementUISeries("#324554");
 
-console.log(xx);
+// console.log(xx);

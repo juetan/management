@@ -64,7 +64,7 @@ Mock.mock("/userinfo", "post", () => {
       data: {
         username: "admin",
         description: "风",
-        avatar: "https://cdn.juetan.cn/usr/uploads/2021/03/2126941832.jpg",
+        avatar: "https://avatars.githubusercontent.com/u/36595085?v=4",
         role: ["admin"],
       },
     };
@@ -75,7 +75,7 @@ Mock.mock("/userinfo", "post", () => {
       data: {
         username: "绝弹",
         description: "鱼塘里的鱼",
-        avatar: "https://cdn.juetan.cn/usr/uploads/2021/03/2126941832.jpg",
+        avatar: "https://avatars.githubusercontent.com/u/36595085?v=4",
         role: ["editor"],
       },
     };
