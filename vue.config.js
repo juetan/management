@@ -36,6 +36,7 @@ module.exports = {
       {
         matchColors: themeColors["default"],
         fileName: "css/chunk-theme-[contenthash:8].css",
+        // 使用element-ui必备，否则plain和普通按钮样式会有bug
         changeSelector: forElementUI.changeSelector,
         injectCss: false,
         isJsUgly: true,
