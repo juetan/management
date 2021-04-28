@@ -1,3 +1,4 @@
+// 用户权限配置
 export default {
   admin: {
     visitAdminPage: true,

@@ -13,7 +13,7 @@
 
 <script>
 import echarts from 'echarts'
-import { lineChartOptions } from '../echarts'
+import { lineChartOptions } from './echarts'
 import resize from './resize';
 const _merge = require('lodash/merge')
 

@@ -25,12 +25,6 @@
     <el-table-column type="selection" width="55" align="left"></el-table-column>
     <!-- 序号 -->
     <el-table-column prop="id" :label="$t('dataTable.id')" width="100" align="left"></el-table-column>
-    <!-- 图片 -->
-    <el-table-column prop="picture" :label="$t('dataTable.image')" width="100" align="left">
-      <template slot-scope="scope">
-        <el-image :src="scope.row.picture" class="image"></el-image>
-      </template>
-    </el-table-column>
     <!-- 名称 -->
     <el-table-column prop="name" :label="$t('dataTable.name')" width="150" align="left"></el-table-column>
     <!-- 编号 -->

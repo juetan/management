@@ -43,7 +43,7 @@ module.exports = {
       },
     ]);
 
-    // 代码分析
+    // 打包分析
     // config
     //   .plugin("BundleAnalyzerPlugin")
     //   .use(require("webpack-bundle-analyzer").BundleAnalyzerPlugin, [

@@ -9,7 +9,7 @@
 
 <script>
 import echarts from 'echarts'
-import { fanChartOptions } from '../echarts'
+import { fanChartOptions } from './echarts'
 const _merge = require('lodash/merge')
 import resize from './resize';
 
