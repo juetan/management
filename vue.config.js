@@ -1,7 +1,8 @@
 // const ComporessionPlugin = require("compression-webpack-plugin");
 const webpackThemeColorRplacer = require("webpack-theme-color-replacer");
-const forElementUI = require("webpack-theme-color-replacer/forElementUI");
+// const forElementUI = require("webpack-theme-color-replacer/forElementUI");
 const themeColors = require("./src/config/theme-colors");
+const filterSelector = require("./src/helper/color");
 
 module.exports = {
   // 公共路径，因为要部署到GitHub pages上，所以将生产环境的值改成仓库名称
@@ -37,7 +38,8 @@ module.exports = {
         matchColors: themeColors["default"],
         fileName: "css/chunk-theme-[contenthash:8].css",
         // 使用element-ui必备，否则plain和普通按钮样式会有bug
-        changeSelector: forElementUI.changeSelector,
+        // changeSelector: forElementUI.changeSelector,
+        changeSelector: filterSelector,
         injectCss: false,
         isJsUgly: true,
       },
