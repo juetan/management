@@ -148,4 +148,20 @@ export default {
     noContent: "No content copyed",
     copySuccessfully: "Notice: The classname of icon has been copyed",
   },
+  capability: {
+    currentRole: "Role",
+    currentRoleTip: "Current has two roles：admin and editor",
+    pageCap: "PageCaP",
+    pageCapTip:
+      "has visit_admin_page capability can visit /admin-page，has visit_editor_page capability can visit /editor-page.",
+    directiveCap: "DireCap",
+    directiveCapTip:
+      "Buttons which has no capability will auto hidden(here are 4 capabilities：Publish、Delete、Edit、Read)",
+    directiveCapDescription:
+      "Only people who has visit_admin_page capability can see this page",
+    publishPost: "Publish Post",
+    deletePost: "Delete Post",
+    editPost: "Edit Post",
+    readPost: "Read Post",
+  },
 };

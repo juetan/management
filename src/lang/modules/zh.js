@@ -150,4 +150,19 @@ export default {
     noContent: "未复制任何内容",
     copySuccessfully: "提示: 已复制图标类名!",
   },
+  capability: {
+    currentRole: "当前角色",
+    currentRoleTip: "当前有2种角色：admin和editor",
+    pageCap: "页面权限",
+    pageCapTip:
+      "拥有visit_admin_page权限可访问/admin-page页面，拥有visit_editor_page权限可访问/editor-page页面.",
+    directiveCap: "指令权限",
+    directiveCapTip:
+      "没有权限的按钮会自动隐藏(当前共有4个权限按钮：发表、删除、修改、阅读)",
+    directiveCapDescription: "拥有 visit_admin_page 权限的用户才能访问到该页面",
+    publishPost: "发表文章",
+    deletePost: "删除文章",
+    editPost: "编辑文章",
+    readPost: "阅读文章",
+  },
 };

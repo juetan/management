@@ -3,11 +3,11 @@
     <el-form label-width="100px">
       <el-form-item>
         <div slot="label">
-          当前角色
+          {{ $t('capability.currentRole') }}
           <el-tooltip placement="top">
             <i class="el-icon-warning-outline"></i>
             <div slot="content">
-              当前有2种角色：admin和editor
+              {{ $t('capability.currentRoleTip') }}
             </div>
           </el-tooltip>
         </div>
@@ -15,32 +15,31 @@
       </el-form-item>
       <el-form-item>
         <div slot="label">
-          页面权限
+          {{ $t('capability.pageCap') }}
           <el-tooltip placement="top">
             <i class="el-icon-warning-outline"></i>
             <div slot="content">
-              拥有visit_admin_page权限可访问/admin-page页面，<br>
-              拥有visit_editor_page权限可访问/editor-page页面.
+              {{ $t('capability.pageCapTip') }}
             </div>
           </el-tooltip>
         </div>
-        拥有 visit_admin_page 权限的用户才能访问到该页面
+        {{ $t('capability.directiveCapDescription') }}
       </el-form-item>
       <el-form-item>
         <div slot="label">
-          指令权限
+          {{ $t('capability.directiveCap') }}
           <el-tooltip placement="top">
             <i class="el-icon-warning-outline"></i>
             <div slot="content">
-              没有权限的按钮会自动隐藏(当前共有4个权限按钮：发表、删除、修改、阅读)
+              {{ $t('capability.directiveCapTip') }}
             </div>
           </el-tooltip>
         </div>
         <el-row>
-          <el-button type="primary" v-cap="'publishPost'">发表文章</el-button>
-          <el-button type="primary" v-cap="'deletePost'">删除文章</el-button>
-          <el-button type="primary" v-cap="'editPost'">修改文章</el-button>
-          <el-button type="primary" v-cap="'readPost'">阅读文章</el-button>
+          <el-button type="primary" v-cap="'publishPost'">{{ $t('capability.publishPost') }}</el-button>
+          <el-button type="primary" v-cap="'deletePost'">{{ $t('capability.deletePost') }}</el-button>
+          <el-button type="primary" v-cap="'editPost'">{{ $t('capability.editPost') }}</el-button>
+          <el-button type="primary" v-cap="'readPost'">{{ $t('capability.readPost') }}</el-button>
         </el-row>
       </el-form-item>
     </el-form>
