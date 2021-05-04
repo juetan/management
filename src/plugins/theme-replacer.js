@@ -1,28 +1,22 @@
 import client from "webpack-theme-color-replacer/client";
 import store from "@/store";
-const themeColors = require("@/config/theme-colors");
+const themeConfig = require("@/config/theme.config.js");
 
-/**
- * 切换主题色
- * @param {array} color 新的主题色
- * @returns void
- */
+// 替换主题色
 export function replaceThemeColors(color) {
   // 选项
-  const options = { newColors: themeColors[color] };
-
+  const options = { newColors: themeConfig[color] };
   return client.changer.changeColor(options, Promise);
 }
 
-/**
- * 初始化主题色
- */
+// 初始化主题色
 export function initThemeColor() {
-  const savedColors = store.state.default.theme;
-
-  if (savedColors) {
+  // 获取当前主题
+  const currentTheme = store.state.default.theme;
+  if (currentTheme) {
     document.body.style.display = "none";
-    replaceThemeColors(savedColors).finally(() => {
+    // 替换颜色
+    replaceThemeColors(currentTheme).finally(() => {
       document.body.style.display = "";
     });
   }

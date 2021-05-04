@@ -1,6 +1,5 @@
 import Vue from "vue";
 import VueI18n from "vue-i18n";
-// import store from "@/store";
 // element-ui的语言包
 import locale_element_en from "element-ui/lib/locale/lang/en";
 import locale_element_zh from "element-ui/lib/locale/lang/zh-CN";
@@ -24,7 +23,6 @@ const messages = {
 // 创建实例
 const lang = new VueI18n({
   locale: localStorage.getItem("language") || "zh",
-  // locale: store.state.default.language,
   messages,
 });
 

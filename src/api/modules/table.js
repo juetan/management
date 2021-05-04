@@ -1,8 +1,6 @@
-import request from "../request";
+import request from "../index";
 
-export default {
-  // 用户登录
-  getTableData() {
-    return request.get("/table");
-  },
-};
+// 用户登录
+export function getTableData() {
+  return request.get("/table");
+}

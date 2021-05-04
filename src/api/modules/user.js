@@ -1,12 +1,11 @@
-import request from "../request";
+import request from "../index";
 
-export default {
-  // 登录用户
-  login_user(data) {
-    return request.post("/login", data);
-  },
-  // 获取用户信息
-  get_userinfo() {
-    return request.post("/userinfo");
-  },
-};
+// 登录用户
+export function login_user(data) {
+  return request.post("/login", data);
+}
+
+// 获取用户信息
+export function get_userinfo() {
+  return request.post("/userinfo");
+}

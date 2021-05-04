@@ -77,6 +77,7 @@
 
 <script>
 import layoutCard from '@/components/layout-card';
+import { getTableData } from '@/api/modules/table';
 export default {
   name: "dataTable",
   data() {
@@ -105,7 +106,7 @@ export default {
   },
   created() {
     // 网络请求数据
-    this.$api.table.getTableData().then((data)=>{
+    getTableData().then((data)=>{
       // 保存所有的数据
       this.allData = Object.freeze(data.data);
       // 过滤后的数据(使用搜索后)

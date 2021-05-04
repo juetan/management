@@ -1,4 +1,4 @@
-import userApi from "@/api/modules/user";
+import { login_user, get_userinfo } from "@/api/modules/user";
 
 const state = {
   // 用户令牌
@@ -64,7 +64,7 @@ const mutations = {
 const actions = {
   // 登录用户
   login_user(context, userData) {
-    return userApi.login_user(userData).then((data) => {
+    return login_user(userData).then((data) => {
       console.log(data);
       context.commit("set_token", data.token);
       return data;
@@ -81,7 +81,7 @@ const actions = {
   },
   // 获取用户信息
   get_userinfo(context) {
-    return userApi.get_userinfo().then((data) => {
+    return get_userinfo().then((data) => {
       const userinfo = data.data;
       context.commit("set_username", userinfo.username);
       context.commit("set_description", userinfo.description);

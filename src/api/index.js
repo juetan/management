@@ -1,26 +1,103 @@
-import Vue from "vue";
-import request from "./request";
+// 引入axios
+import axios from "axios";
+import store from "@/store";
+import i18n from "@/lang";
+import loading from "@/helper/loading";
+import { message } from "@/plugins/element-ui";
 
-// 此处好像不能单独提取出一个函数，会提示错误
-const moduleFiles = require.context("./modules", true, /\.js$/);
+// 创建axio例
+const request = axios.create({
+  // 基本URL(纯MOCKJS情况下无效)
+  // baseURL: process.env.VUE_APP_API_BASE_URL,
+  // 请求超时时间
+  timeout: 3000,
+});
 
-// moduleFiles既是函数也是对象，此处作对象调用
-const modules = moduleFiles.keys().reduce((modules, modulePath) => {
-  // 正则替换，例如将./user.js替换为user
-  const moduleName = modulePath.replace(/^\.\/(.*)\.\w+$/, "$1");
-  // 此处作函数调用，类似于import
-  const module = moduleFiles(modulePath);
-  // 将所有模块放在一个数组内
-  modules[moduleName] = module.default;
-  return modules;
-}, {});
+// 设置请求拦截器
+request.interceptors.request.use((config) => {
+  // 打开loading
+  loading.open();
+  // 获取本地token
+  const token = store.state.user.token;
+  if (token) {
+    // 如果本地有TOEKN则携带
+    config.headers["X-TOKEN"] = token;
+  }
+  return config;
+}, errorHandler);
 
-const api = {
-  ...modules,
-};
+// 设置相应拦截器
+request.interceptors.response.use((response) => {
+  // 关闭loading
+  loading.close();
+  // 返回数据即可
+  const data = response.data;
+  // 判断自定义状态码
+  let isError;
+  switch (data.code) {
+    case 2000:
+      break;
+    case 4000:
+      isError = true;
+      break;
+    default:
+      isError = true;
+      break;
+  }
+  // 自定义状态码异常处理
+  if (isError) {
+    // 弹窗提示错误信息
+    message({
+      type: "error",
+      message: "请求错误：" + data.message,
+    });
+  } else {
+    return data;
+  }
+}, errorHandler);
 
-Vue.prototype.$api = api;
+// 异常处理
+function errorHandler(error) {
+  // 遍历http状态码
+  let status = error.status;
+  switch (status) {
+    case 400:
+      error.message = i18n.t("request.error400");
+      break;
+    case 401:
+      error.message = i18n.t("request.error401");
+      break;
+    case 403:
+      error.message = i18n.t("request.error403");
+      break;
+    case 404:
+      error.message = i18n.t("request.error404");
+      break;
+    case 500:
+      error.message = i18n.t("request.error500");
+      break;
+    case 501:
+      error.message = i18n.t("request.error501");
+      break;
+    case 502:
+      error.message = i18n.t("request.error502");
+      break;
+    case 503:
+      error.message = i18n.t("request.error503");
+      break;
+    case 504:
+      error.message = i18n.t("request.error504");
+      break;
+    default:
+      error.message = i18n.t("request.errorunknow");
+      break;
+  }
+  // 弹窗提示错误信息
+  message({
+    type: "error",
+    message: error.message,
+  });
+  return Promise.reject(error);
+}
 
-Vue.prototype.$request = request;
-
-export default api;
+export default request;
