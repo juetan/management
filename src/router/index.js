@@ -45,9 +45,11 @@ router.beforeEach(function(to, from, next) {
       // 检查是否已获取用户角色等信息
       const roled = store.state.user.role && store.state.user.role.length !== 0;
       if (!roled) {
-        // 获取用户信息并跳转路由
+        // 获取用户信息并跳转路由: 虽然请求头携带有token，但mockjs好像获取不到http headers，这里暂时这样处理
         store
-          .dispatch("user/get_userinfo")
+          .dispatch("user/get_userinfo", {
+            token: store.state.user.token,
+          })
           .then(() => {
             next();
           })

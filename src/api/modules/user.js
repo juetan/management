@@ -6,6 +6,6 @@ export function login_user(data) {
 }
 
 // 获取用户信息
-export function get_userinfo() {
-  return request.post("/userinfo");
+export function get_userinfo(data) {
+  return request.post("/userinfo",data);
 }

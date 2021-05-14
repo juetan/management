@@ -2,8 +2,8 @@ import store from "@/store";
 import roleConfig from "@/config/role.config.js";
 
 function hasCapability(capability) {
-  // 是否显示在菜单上(boolean)
-  let isShowedInMenu = false;
+  // 是否有权限(boolean)
+  let isCapabilitied = false;
   // 如果需要权限则判断一下权限
   if (capability) {
     // 遍历当前用户角色
@@ -15,14 +15,14 @@ function hasCapability(capability) {
         roleCapabilities[capability] &&
         roleCapabilities[capability] === true
       ) {
-        isShowedInMenu = true;
+        isCapabilitied = true;
       }
     });
   } else {
     // 没有声明权限的话默认为公共权限，任何角色都可访问
-    isShowedInMenu = true;
+    isCapabilitied = true;
   }
-  return isShowedInMenu;
+  return isCapabilitied;
 }
 
 export default hasCapability;

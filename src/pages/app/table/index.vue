@@ -148,7 +148,7 @@ export default {
         this.selectedData.forEach((item)=> {
           // 从现有表格数据中删去这些数据项
           this.filteredData.forEach((itemI, indexI)=> {
-            if (item === itemI) {
+            if (item.id === itemI.id) {
               this.filteredData.splice(indexI, 1);
             }
           });
@@ -167,7 +167,7 @@ export default {
     handleSearch() {
       // 没有搜索关键字的话，直接返回所有数据
       if(!this.searchKeyword) {
-        this.filteredData = this.allData
+        Object.assign(this.filteredData,this.allData);
       } else {
         // 根据搜索类型判断搜索的字段
         let attr = this.searchType===1 ? 'name' : this.searchType===2 ? 'number' : 'manufacturer';

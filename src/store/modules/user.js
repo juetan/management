@@ -65,7 +65,6 @@ const actions = {
   // 登录用户
   login_user(context, userData) {
     return login_user(userData).then((data) => {
-      console.log(data);
       context.commit("set_token", data.token);
       return data;
     });
@@ -80,8 +79,8 @@ const actions = {
     return Promise.resolve();
   },
   // 获取用户信息
-  get_userinfo(context) {
-    return get_userinfo().then((data) => {
+  get_userinfo(context, data) {
+    return get_userinfo(data).then((data) => {
       const userinfo = data.data;
       context.commit("set_username", userinfo.username);
       context.commit("set_description", userinfo.description);

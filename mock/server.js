@@ -54,10 +54,10 @@ Mock.mock("/login", "post", (options) => {
 });
 
 // 用户信息
-Mock.mock("/userinfo", "post", () => {
-  // const data = JSON.parse(options.body);
-  const username = "admin";
-  if (username === "admin") {
+Mock.mock("/userinfo", "post", (options) => {
+  const data = JSON.parse(options.body);
+  const token = data.token;
+  if (token === "user_admin_token") {
     return {
       code: 2000,
       message: "数据请求成功",
@@ -68,7 +68,7 @@ Mock.mock("/userinfo", "post", () => {
         role: ["admin"],
       },
     };
-  } else if (username === "juetan") {
+  } else if (token === "user_juetan_token") {
     return {
       code: 2000,
       message: "数据请求成功",
@@ -77,17 +77,6 @@ Mock.mock("/userinfo", "post", () => {
         description: "鱼塘里的鱼",
         avatar: "https://avatars.githubusercontent.com/u/36595085?v=4",
         role: ["editor"],
-      },
-    };
-  } else {
-    return {
-      code: 2000,
-      message: "数据请求成功",
-      data: {
-        username: "admin",
-        description: "风",
-        avatar: "https://cdn.juetan.cn/usr/uploads/2021/03/2126941832.jpg",
-        role: ["admin"],
       },
     };
   }

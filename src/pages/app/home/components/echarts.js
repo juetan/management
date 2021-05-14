@@ -181,3 +181,44 @@ export const fanChartOptions = {
     },
   ],
 };
+
+export const barChartOptions = {
+  color: ["#09f"],
+  grid: {
+    left: "3%",
+    right: "4%",
+    top: "5%",
+    bottom: "3%",
+    containLabel: true,
+  },
+  xAxis: [
+    {
+      type: "category",
+      data: [
+        i18n.t("home.mo"),
+        i18n.t("home.tu"),
+        i18n.t("home.we"),
+        i18n.t("home.th"),
+        i18n.t("home.fr"),
+        i18n.t("home.sa"),
+        i18n.t("home.su"),
+      ],
+      axisTick: {
+        alignWithLabel: true,
+      },
+    },
+  ],
+  yAxis: [
+    {
+      type: "value",
+    },
+  ],
+  series: [
+    {
+      name: "直接访问",
+      type: "bar",
+      barWidth: "25%",
+      data: [10, 52, 200, 334, 390, 330, 220],
+    },
+  ],
+};
