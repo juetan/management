@@ -45,32 +45,32 @@ module.exports = {
     ]);
 
     // 打包分析
-    config
-      .plugin("BundleAnalyzerPlugin")
-      .use(require("webpack-bundle-analyzer").BundleAnalyzerPlugin, [
-        {
-          //  在默认浏览器中自动打开
-          openAnalyzer: process.env.NODE_ENV === "development" ? false : true,
-        },
-      ]);
+    // config
+    //   .plugin("BundleAnalyzerPlugin")
+    //   .use(require("webpack-bundle-analyzer").BundleAnalyzerPlugin, [
+    //     {
+    //       //  在默认浏览器中自动打开
+    //       openAnalyzer: process.env.NODE_ENV === "development" ? false : true,
+    //     },
+    //   ]);
 
     // 生产环境下的webpack配置
-    if (process.env.NODE_ENV === "production") {
-      config.plugins.delete("preload");
-      config.plugins.delete("prefetch");
+    // if (process.env.NODE_ENV === "production") {
+    //   config.plugins.delete("preload");
+    //   config.plugins.delete("prefetch");
 
-      // 将文件压缩成.gz格式
-      config.plugin("compression").use(ComporessionPlugin, [
-        {
-          // 正则匹配文件后缀
-          test: /.js$|.html$|.css$/,
-          // 对超过10KB的文件进行压缩
-          threshold: 1,
-          // 不删除源文件，主要是兼容不支持gzip的服务器
-          deleteOriginalAssets: false,
-        },
-      ]);
-    }
+    //   // 将文件压缩成.gz格式
+    //   config.plugin("compression").use(ComporessionPlugin, [
+    //     {
+    //       // 正则匹配文件后缀
+    //       test: /.js$|.html$|.css$/,
+    //       // 对超过10KB的文件进行压缩
+    //       threshold: 1,
+    //       // 不删除源文件，主要是兼容不支持gzip的服务器
+    //       deleteOriginalAssets: false,
+    //     },
+    //   ]);
+    // }
   },
 
   // css相关配置
