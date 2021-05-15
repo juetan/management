@@ -5,9 +5,7 @@
 
 ## 技术栈
 
-基于[NodeJS](https://nodejs.org/)、[VS Code](https://code.visualstudio.com/)和[vue-cli](https://cli.vuejs.org)开发，技术栈主要以[vue](https://vuejs.org)、[axios](http://www.axios-js.com/)、[vuex](https://vuex.vuejs.org/)、
-
-[vue-router](https://router.vuejs.org/)和[element-ui](https://element.eleme.cn/)为主。此外，还包含以下依赖或包：
+基于[NodeJS](https://nodejs.org/)、[VS Code](https://code.visualstudio.com/)和[vue-cli](https://cli.vuejs.org)开发，技术栈主要以[vue](https://vuejs.org)、[axios](http://www.axios-js.com/)、[vuex](https://vuex.vuejs.org/)、[vue-router](https://router.vuejs.org/)和[element-ui](https://element.eleme.cn/)为主。此外，还包含以下依赖或包：
 
 - 主题修改基于[webpack-theme-color-replacer](https://github.com/hzsrc/webpack-theme-color-replacer)
 - css预处理基于[scss](https://sass-lang.com/)
