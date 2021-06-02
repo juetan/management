@@ -1,6 +1,6 @@
 基于Vue2.x + Vue-cli4.x的后台管理系统，主要包含路由自动挂载、主题换肤、多语言国际化、表格操作、图表展示、全屏操作、字体图标、权限控制、路由嵌套和数据mock等功能。注意：本项目为个人开源项目，部分内容学习自vue-element-admin等优秀开源作品，不做业务开发，仅用于实践。
 
-- 演示地址：[https://juetan.github.io/management](https://juetan.github.io/management)
+- 演示地址：[https://juetan.github.io/management](https://juetan.github.io/management) (管理账号：admin-admin；普通账号：juetan-juetan)
 - 文档地址：[https://www.juetan.cn/tag/management](https://www.juetan.cn/tag/management)
 
 ## 技术栈
