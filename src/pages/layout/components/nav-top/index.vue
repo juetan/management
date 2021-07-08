@@ -12,6 +12,11 @@
       <div class="header-left">
         <el-button icon="el-icon-more-outline" type="text" @click="handleCollapse" id="mcollapse"></el-button>
       </div>
+      <el-menu mode="horizontal" router>
+          <el-menu-item v-for="route in routes" :key="route.path" :index="route.path">
+              {{route.name}}
+          </el-menu-item>
+      </el-menu>
       <div class="header-right">
         <!-- 网站设置 -->
         <el-tooltip class="header-item" effect="dark" :content="$t('layout.settingTip')" placement="bottom" :open-delay="500" >
@@ -91,9 +96,15 @@ import screenfull from 'screenfull'
 import driver from '@/plugins/driver'
 import driverSteps from './driver-steps';
 import { mapState } from 'vuex';
+import routes from '@/router/modules/normal-routes.js';
 
 export default {
   name: "navtop",
+  data() {
+      return {
+          routes
+      }
+  },
   computed: {
     langIcon() {
       return 'icon-'+this.$store.state.default.language

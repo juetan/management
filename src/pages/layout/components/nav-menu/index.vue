@@ -1,5 +1,4 @@
 <template>
-  <el-scrollbar id="navmenu">
     <!-- 如需路由正确工作，需添加router属性 -->
     <el-menu 
       router
@@ -15,7 +14,6 @@
       <!-- 多少层routes就多少层router-view -->
       <vue-navitem :data="routes"></vue-navitem>
     </el-menu>
-  </el-scrollbar>
 </template>
 
 <script>

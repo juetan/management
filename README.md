@@ -1,13 +1,11 @@
-基于Vue2.x + Vue-cli4.x的后台管理系统，主要包含路由自动挂载、主题换肤、多语言国际化、表格操作、图表展示、全屏操作、字体图标、权限控制、路由嵌套和数据mock等功能。注意：本项目为个人开源项目，部分内容学习自vue-element-admin等优秀开源作品，不做业务开发，仅用于实践。
+基于Vue2.x + Vue-cli4.x的后台管理系统，主要包含路由自动挂载、主题换肤、多语言国际化、表格操作、图表展示、全屏操作、字体图标、权限控制、路由嵌套和数据mock等功能。注意：本项目为个人开源项目，部分内容学习自vue-element-admin等优秀开源作品，不做业务开发，仅用于实践哈。
 
 - 演示地址：[https://juetan.github.io/management](https://juetan.github.io/management)
 - 文档地址：[https://www.juetan.cn/tag/management](https://www.juetan.cn/tag/management)
 
 ## 技术栈
 
-基于[NodeJS](https://nodejs.org/)、[VS Code](https://code.visualstudio.com/)和[vue-cli](https://cli.vuejs.org)开发，技术栈主要以[vue](https://vuejs.org)、[axios](http://www.axios-js.com/)、[vuex](https://vuex.vuejs.org/)、
-
-[vue-router](https://router.vuejs.org/)和[element-ui](https://element.eleme.cn/)为主。此外，还包含以下依赖或包：
+基于[NodeJS](https://nodejs.org/)、[VS Code](https://code.visualstudio.com/)和[vue-cli](https://cli.vuejs.org)开发，技术栈主要以[vue](https://vuejs.org)、[axios](http://www.axios-js.com/)、[vuex](https://vuex.vuejs.org/)、[vue-router](https://router.vuejs.org/)和[element-ui](https://element.eleme.cn/)为主。此外，还包含以下依赖或包：
 
 - 主题修改基于[webpack-theme-color-replacer](https://github.com/hzsrc/webpack-theme-color-replacer)
 - css预处理基于[scss](https://sass-lang.com/)

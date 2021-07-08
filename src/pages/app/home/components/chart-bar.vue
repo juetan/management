@@ -11,9 +11,11 @@
 import echarts from 'echarts';
 import { barChartOptions } from './echarts';
 const _merge = require('lodash/merge')
+import resize from './resize';
 
 export default {
   name: 'barChart',
+  mixins: [resize],
    computed: {
     // 柱状图语言包
     barChartLang() {
