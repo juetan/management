@@ -13,6 +13,7 @@ module.exports = {
 
   // 对象配置webpack：该对象会与webpack的配置对象合并
   configureWebpack: {
+    devtool: 'source-map',
     devServer: {
       // 在hosts文件中添加127.0.0.1 www.8.com记录，再配合以下两个参数设置可使用www.8.com代替localhost:8080访问
       host: "localhost",

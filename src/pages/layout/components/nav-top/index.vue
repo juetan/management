@@ -4,7 +4,7 @@
       <!-- 网站LOGO -->
       <img :src="require('./logo.png')" alt="" width="30px" class="header-logo" id="msetting1">
       <!-- 网站标题 -->
-      {{ $t('system.title') }}
+      {{ $t('system.title') }}1
     </div>
     <!-- 如何使用flex或grid实现一个元素在左侧，其余元素在右侧：margin-right: auto --->
     <div class="header-main" :class="collapsed ? 'header-main-collapsed' : ''">
@@ -12,8 +12,8 @@
       <div class="header-left">
         <el-button icon="el-icon-more-outline" type="text" @click="handleCollapse" id="mcollapse"></el-button>
       </div>
-      <el-menu mode="horizontal" router>
-          <el-menu-item v-for="route in routes" :key="route.path" :index="route.path">
+      <el-menu mode="horizontal">
+          <el-menu-item v-for="route in routes" :key="route.path" :index="route.path" @click="handleClickMenu">
               {{route.name}}
           </el-menu-item>
       </el-menu>
@@ -116,6 +116,9 @@ export default {
     })
   },
   methods: {
+    handleClickMenu() {
+        
+    },
     // 右侧菜单栏折叠
     handleCollapse() {
       this.$store.commit('default/trigger_collapsed')
