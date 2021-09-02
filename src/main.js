@@ -7,7 +7,7 @@ import store from "@/store";
 import i18n from "@/lang";
 // 封装过的element-ui，包含新的主题和多语言切换
 import "@/plugins/element-ui.js";
-// 配置文件
+// 配置文件   
 import "@/config";
 // 网络请求
 import request from "@/api";
